@@ -67,7 +67,7 @@ xml = xml.tag! 'sps-api-request', id: "ST01-00101-101" do
       end
     else
       if key == :item_name
-        xml.tag! key, Base64.encode64(value).strip
+        xml.tag! key, Base64.strict_encode64(value)
       else
         xml.tag! key, value
       end
