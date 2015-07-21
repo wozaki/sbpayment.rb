@@ -5,6 +5,7 @@ require 'sbpayment'
 require 'rspec'
 require 'webmock/rspec'
 require 'vcr'
+require 'pry'
 
 $test_env = true
 
@@ -14,9 +15,4 @@ VCR.configure do |config|
   config.default_cassette_options = {
     serialize_with: :syck
   }
-end
-
-RSpec.configure do |config|
-  config.include WebMock::API
-  config.extend VCR::RSpec::Macros
 end

@@ -1,4 +1,5 @@
 require 'bundler/setup'
+require 'pp'
 require 'sbpayment'
 
 params = Sbpayment::Parameters::Credit.new({
@@ -31,4 +32,4 @@ params = Sbpayment::Parameters::Credit.new({
 
 client = Sbpayment::Client.new(sandbox: true)
 res = client.request(:credit, params)
-puts res.body
+pp res
