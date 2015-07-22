@@ -1,4 +1,4 @@
-# sbpayment
+# sbpayment.rb [![Circle CI](https://img.shields.io/circleci/project/quipper/sbpayment.rb.svg)](https://circleci.com/gh/quipper/sbpayment.rb)
 
 Status: WIP
 

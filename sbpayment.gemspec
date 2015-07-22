@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.version       = Sbpayment::VERSION
   spec.authors       = ["Kohei Hasegawa"]
   spec.email         = ["ameutau@gmail.com"]
-  spec.homepage      = "https://github.com/quipper/sbpayment"
+  spec.homepage      = "https://github.com/quipper/sbpayment.rb"
   spec.summary       = %q{A client library for sbpayment (Softbank Payment Service) written in Ruby.}
   spec.description   = %q{A client library for sbpayment (Softbank Payment Service) written in Ruby.}
   spec.license       = "MIT"
@@ -17,8 +17,13 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "faraday"
-  spec.add_development_dependency "bundler", "~> 1.8"
-  spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "rspec"
+  spec.add_dependency 'faraday'
+  spec.add_dependency 'builder'
+  spec.add_dependency 'xml-simple'
+  spec.add_development_dependency 'bundler', '~> 1.8'
+  spec.add_development_dependency 'rake', '~> 10.0'
+  spec.add_development_dependency 'rspec'
+  spec.add_development_dependency 'vcr'
+  spec.add_development_dependency 'webmock'
+  spec.add_development_dependency 'pry'
 end

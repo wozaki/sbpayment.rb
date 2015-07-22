@@ -1,0 +1,191 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://30132002:8435dbd48f2249807ec216c3d5ecab714264cc4a@stbfep.sps-system.com/api/xmlapi.do
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="Shift_JIS"?>
+        <sps-api-request id="ST01-00101-101">
+          <merchant_id>30132</merchant_id>
+          <service_id>002</service_id>
+          <cust_code>SPSTestUser0001</cust_code>
+          <order_id>00f0f5e8a5e356ee9fbd5aeae8d3de8d</order_id>
+          <item_id>ITEMID00000000000000000000000001</item_id>
+          <item_name>g2WDWINnj6SVaQ==</item_name>
+          <tax>1</tax>
+          <amount>1</amount>
+          <free1></free1>
+          <free2></free2>
+          <free3></free3>
+          <order_rowno></order_rowno>
+          <sps_cust_info_return_flg>1</sps_cust_info_return_flg>
+          <dtls></dtls>
+          <pay_method_info>
+            <cc_number>5250729026209007</cc_number>
+            <cc_expiration>201103</cc_expiration>
+            <security_code>798</security_code>
+            <cust_manage_flg>0</cust_manage_flg>
+          </pay_method_info>
+          <pay_option_manage></pay_option_manage>
+          <encrypted_flg>0</encrypted_flg>
+          <request_date>20150721165956</request_date>
+          <limit_second></limit_second>
+          <hashkey>8435dbd48f2249807ec216c3d5ecab714264cc4a</hashkey>
+          <sps_hashcode>8f9073dbe0407e470e75d6b0ae32f7c48537cba1</sps_hashcode>
+        </sps-api-request>
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Content-Type:
+      - text/xml
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 21 Jul 2015 07:59:58 GMT
+      Server:
+      - Apache
+      Set-Cookie:
+      - JSESSIONID=AF8DE5CBDD8E7CB71F0B1A02DC001875.fep215; Path=/api
+      Pragma:
+      - No-cache
+      Cache-Control:
+      - no-cache,no-store,max-age=0
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cteonnt-Length:
+      - '645'
+      Connection:
+      - close
+      Content-Type:
+      - text/xml;charset=Shift_JIS
+      Content-Language:
+      - ja
+      Content-Length:
+      - '318'
+    body:
+      encoding: ASCII-8BIT
+      string: "<?xml version='1.0' encoding='Shift_JIS' ?>\n  <sps-api-response id=\"ST01-00101-101\">\n
+        \   <res_result>OK</res_result>\n    <res_sps_transaction_id>B30132002ST010010110100121190579</res_sps_transaction_id>\n
+        \   <res_tracking_id>00000013341659</res_tracking_id>\n    <res_pay_method_info>\n
+        \     <cc_company_code>99665</cc_company_code>\n      \n      <recognized_no>123456</recognized_no>\n
+        \     \n    </res_pay_method_info>\n    <res_sps_info>\n      <res_sps_cust_no/>\n
+        \     <res_sps_payment_no/>\n    </res_sps_info>\n    <res_process_date>20150721165958</res_process_date>\n
+        \   <res_err_code/>\n    <res_date>20150721165959</res_date>\n  </sps-api-response>\n"
+    http_version: 
+  recorded_at: Tue, 21 Jul 2015 07:59:57 GMT
+- request:
+    method: post
+    uri: https://30132002:8435dbd48f2249807ec216c3d5ecab714264cc4a@stbfep.sps-system.com/api/xmlapi.do
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="Shift_JIS"?>
+        <sps-api-request id="ST01-00101-101">
+          <merchant_id>30132</merchant_id>
+          <service_id>002</service_id>
+          <cust_code>SPSTestUser0001</cust_code>
+          <order_id>00f0f5e8a5e356ee9fbd5aeae8d3de8d</order_id>
+          <item_id>ITEMID00000000000000000000000001</item_id>
+          <item_name>g2WDWINnj6SVaQ==</item_name>
+          <tax>1</tax>
+          <amount>1</amount>
+          <free1></free1>
+          <free2></free2>
+          <free3></free3>
+          <order_rowno></order_rowno>
+          <sps_cust_info_return_flg>1</sps_cust_info_return_flg>
+          <dtls></dtls>
+          <pay_method_info>
+            <cc_number>5250729026209007</cc_number>
+            <cc_expiration>201103</cc_expiration>
+            <security_code>798</security_code>
+            <cust_manage_flg>0</cust_manage_flg>
+          </pay_method_info>
+          <pay_option_manage></pay_option_manage>
+          <encrypted_flg>0</encrypted_flg>
+          <request_date>20150721165956</request_date>
+          <limit_second></limit_second>
+          <hashkey>8435dbd48f2249807ec216c3d5ecab714264cc4a</hashkey>
+          <sps_hashcode>8f9073dbe0407e470e75d6b0ae32f7c48537cba1</sps_hashcode>
+        </sps-api-request>
+        <sps-api-request id="ST01-00101-101">
+          <merchant_id>30132</merchant_id>
+          <service_id>002</service_id>
+          <cust_code>SPSTestUser0001</cust_code>
+          <order_id>00f0f5e8a5e356ee9fbd5aeae8d3de8d</order_id>
+          <item_id>ITEMID00000000000000000000000001</item_id>
+          <item_name>g2WDWINnj6SVaQ==</item_name>
+          <tax>1</tax>
+          <amount>1</amount>
+          <free1></free1>
+          <free2></free2>
+          <free3></free3>
+          <order_rowno></order_rowno>
+          <sps_cust_info_return_flg>1</sps_cust_info_return_flg>
+          <dtls></dtls>
+          <pay_method_info>
+            <cc_number>5250729026209007</cc_number>
+            <cc_expiration>201103</cc_expiration>
+            <security_code>798</security_code>
+            <cust_manage_flg>0</cust_manage_flg>
+          </pay_method_info>
+          <pay_option_manage></pay_option_manage>
+          <encrypted_flg>0</encrypted_flg>
+          <request_date>20150721165956</request_date>
+          <limit_second></limit_second>
+          <hashkey>8435dbd48f2249807ec216c3d5ecab714264cc4a</hashkey>
+          <sps_hashcode>8f9073dbe0407e470e75d6b0ae32f7c48537cba1</sps_hashcode>
+        </sps-api-request>
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Content-Type:
+      - text/xml
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 21 Jul 2015 07:59:59 GMT
+      Server:
+      - Apache
+      Set-Cookie:
+      - JSESSIONID=60B57D9E98929CF85ABEE6D19DE8FCD4.fep215; Path=/api
+      Pragma:
+      - No-cache
+      Cache-Control:
+      - no-cache,no-store,max-age=0
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cteonnt-Length:
+      - '203'
+      Connection:
+      - close
+      Content-Type:
+      - text/xml;charset=Shift_JIS
+      Content-Language:
+      - ja
+      Content-Length:
+      - '152'
+    body:
+      encoding: ASCII-8BIT
+      string: "<?xml version=\"1.0\" encoding=\"Shift_JIS\" ?>\r\n<sps-api-response>\r\n
+        \   <res_result>NG</res_result>\r\n    <res_err_code>99900999</res_err_code>\r\n
+        \   <res_date>20150721165959</res_date>\r\n</sps-api-response>\r\n"
+    http_version: 
+  recorded_at: Tue, 21 Jul 2015 07:59:58 GMT
+recorded_with: VCR 2.9.3
