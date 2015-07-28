@@ -16,8 +16,7 @@ module Sbpayment
       end
 
       def to_xml
-        # TODO needs to change this id as dynamic
-        @xml.tag! 'sps-api-request', id: "ST01-00101-101" do
+        @xml.tag! 'sps-api-request', id: sps_api_request_id do
           @attributes.each do |key, value|
             if value.is_a? Hash
               @xml.tag! key do

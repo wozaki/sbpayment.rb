@@ -2,7 +2,7 @@ require 'bundler/setup'
 require 'pp'
 require 'sbpayment'
 
-params = Sbpayment::Parameters::Credit.new({
+params = Sbpayment::Parameters::Api::Credit::Authorization.new({
   merchant_id: "30132",
   service_id: "002",
   cust_code: "SPSTestUser0001",
@@ -30,6 +30,10 @@ params = Sbpayment::Parameters::Credit.new({
   hashkey: "8435dbd48f2249807ec216c3d5ecab714264cc4a"
 })
 
-client = Sbpayment::Client.new(sandbox: true)
-res = client.request(:credit, params)
-pp res
+if params.valid?
+  client = Sbpayment::Client.new(sandbox: true)
+  res = client.request(:credit, params)
+  pp res
+else
+  puts 'validation is failed.'
+end

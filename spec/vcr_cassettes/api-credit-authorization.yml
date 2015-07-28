@@ -7,11 +7,11 @@ http_interactions:
       encoding: UTF-8
       string: |
         <?xml version="1.0" encoding="Shift_JIS"?>
-        <sps-api-request id="ST01-00101-101">
+        <sps-api-request id="ST01-00111-101">
           <merchant_id>30132</merchant_id>
           <service_id>002</service_id>
           <cust_code>SPSTestUser0001</cust_code>
-          <order_id>00f0f5e8a5e356ee9fbd5aeae8d3de8d</order_id>
+          <order_id>54f7de865737ff6730a89436aa419c9a</order_id>
           <item_id>ITEMID00000000000000000000000001</item_id>
           <item_name>g2WDWINnj6SVaQ==</item_name>
           <tax>1</tax>
@@ -30,10 +30,10 @@ http_interactions:
           </pay_method_info>
           <pay_option_manage></pay_option_manage>
           <encrypted_flg>0</encrypted_flg>
-          <request_date>20150721165956</request_date>
+          <request_date>20150728151203</request_date>
           <limit_second></limit_second>
           <hashkey>8435dbd48f2249807ec216c3d5ecab714264cc4a</hashkey>
-          <sps_hashcode>8f9073dbe0407e470e75d6b0ae32f7c48537cba1</sps_hashcode>
+          <sps_hashcode>b42f069786b39640727da20c76dcbe9fedef3cfe</sps_hashcode>
         </sps-api-request>
     headers:
       User-Agent:
@@ -50,11 +50,11 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 21 Jul 2015 07:59:58 GMT
+      - Tue, 28 Jul 2015 06:12:05 GMT
       Server:
       - Apache
       Set-Cookie:
-      - JSESSIONID=AF8DE5CBDD8E7CB71F0B1A02DC001875.fep215; Path=/api
+      - JSESSIONID=27D43BCF3F8EDDC5C2D6198183FEFE4E.fep214; Path=/api
       Pragma:
       - No-cache
       Cache-Control:
@@ -70,18 +70,18 @@ http_interactions:
       Content-Language:
       - ja
       Content-Length:
-      - '318'
+      - '322'
     body:
       encoding: ASCII-8BIT
-      string: "<?xml version='1.0' encoding='Shift_JIS' ?>\n  <sps-api-response id=\"ST01-00101-101\">\n
-        \   <res_result>OK</res_result>\n    <res_sps_transaction_id>B30132002ST010010110100121190579</res_sps_transaction_id>\n
-        \   <res_tracking_id>00000013341659</res_tracking_id>\n    <res_pay_method_info>\n
+      string: "<?xml version='1.0' encoding='Shift_JIS' ?>\n  <sps-api-response id=\"ST01-00111-101\">\n
+        \   <res_result>OK</res_result>\n    <res_sps_transaction_id>B30132002ST010011110100121671074</res_sps_transaction_id>\n
+        \   <res_tracking_id>00000013368599</res_tracking_id>\n    <res_pay_method_info>\n
         \     <cc_company_code>99665</cc_company_code>\n      \n      <recognized_no>123456</recognized_no>\n
         \     \n    </res_pay_method_info>\n    <res_sps_info>\n      <res_sps_cust_no/>\n
-        \     <res_sps_payment_no/>\n    </res_sps_info>\n    <res_process_date>20150721165958</res_process_date>\n
-        \   <res_err_code/>\n    <res_date>20150721165959</res_date>\n  </sps-api-response>\n"
+        \     <res_sps_payment_no/>\n    </res_sps_info>\n    <res_process_date>20150728151206</res_process_date>\n
+        \   <res_err_code/>\n    <res_date>20150728151207</res_date>\n  </sps-api-response>\n"
     http_version: 
-  recorded_at: Tue, 21 Jul 2015 07:59:57 GMT
+  recorded_at: Tue, 28 Jul 2015 06:12:05 GMT
 - request:
     method: post
     uri: https://30132002:8435dbd48f2249807ec216c3d5ecab714264cc4a@stbfep.sps-system.com/api/xmlapi.do
@@ -89,11 +89,11 @@ http_interactions:
       encoding: UTF-8
       string: |
         <?xml version="1.0" encoding="Shift_JIS"?>
-        <sps-api-request id="ST01-00101-101">
+        <sps-api-request id="ST01-00111-101">
           <merchant_id>30132</merchant_id>
           <service_id>002</service_id>
           <cust_code>SPSTestUser0001</cust_code>
-          <order_id>00f0f5e8a5e356ee9fbd5aeae8d3de8d</order_id>
+          <order_id>54f7de865737ff6730a89436aa419c9a</order_id>
           <item_id>ITEMID00000000000000000000000001</item_id>
           <item_name>g2WDWINnj6SVaQ==</item_name>
           <tax>1</tax>
@@ -112,16 +112,16 @@ http_interactions:
           </pay_method_info>
           <pay_option_manage></pay_option_manage>
           <encrypted_flg>0</encrypted_flg>
-          <request_date>20150721165956</request_date>
+          <request_date>20150728151203</request_date>
           <limit_second></limit_second>
           <hashkey>8435dbd48f2249807ec216c3d5ecab714264cc4a</hashkey>
-          <sps_hashcode>8f9073dbe0407e470e75d6b0ae32f7c48537cba1</sps_hashcode>
+          <sps_hashcode>b42f069786b39640727da20c76dcbe9fedef3cfe</sps_hashcode>
         </sps-api-request>
-        <sps-api-request id="ST01-00101-101">
+        <sps-api-request id="ST01-00111-101">
           <merchant_id>30132</merchant_id>
           <service_id>002</service_id>
           <cust_code>SPSTestUser0001</cust_code>
-          <order_id>00f0f5e8a5e356ee9fbd5aeae8d3de8d</order_id>
+          <order_id>54f7de865737ff6730a89436aa419c9a</order_id>
           <item_id>ITEMID00000000000000000000000001</item_id>
           <item_name>g2WDWINnj6SVaQ==</item_name>
           <tax>1</tax>
@@ -140,10 +140,10 @@ http_interactions:
           </pay_method_info>
           <pay_option_manage></pay_option_manage>
           <encrypted_flg>0</encrypted_flg>
-          <request_date>20150721165956</request_date>
+          <request_date>20150728151203</request_date>
           <limit_second></limit_second>
           <hashkey>8435dbd48f2249807ec216c3d5ecab714264cc4a</hashkey>
-          <sps_hashcode>8f9073dbe0407e470e75d6b0ae32f7c48537cba1</sps_hashcode>
+          <sps_hashcode>b42f069786b39640727da20c76dcbe9fedef3cfe</sps_hashcode>
         </sps-api-request>
     headers:
       User-Agent:
@@ -160,11 +160,11 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 21 Jul 2015 07:59:59 GMT
+      - Tue, 28 Jul 2015 06:12:07 GMT
       Server:
       - Apache
       Set-Cookie:
-      - JSESSIONID=60B57D9E98929CF85ABEE6D19DE8FCD4.fep215; Path=/api
+      - JSESSIONID=509E58443B45558C74C3D97585382207.fep214; Path=/api
       Pragma:
       - No-cache
       Cache-Control:
@@ -180,12 +180,12 @@ http_interactions:
       Content-Language:
       - ja
       Content-Length:
-      - '152'
+      - '153'
     body:
       encoding: ASCII-8BIT
       string: "<?xml version=\"1.0\" encoding=\"Shift_JIS\" ?>\r\n<sps-api-response>\r\n
         \   <res_result>NG</res_result>\r\n    <res_err_code>99900999</res_err_code>\r\n
-        \   <res_date>20150721165959</res_date>\r\n</sps-api-response>\r\n"
+        \   <res_date>20150728151207</res_date>\r\n</sps-api-response>\r\n"
     http_version: 
-  recorded_at: Tue, 21 Jul 2015 07:59:58 GMT
+  recorded_at: Tue, 28 Jul 2015 06:12:05 GMT
 recorded_with: VCR 2.9.3

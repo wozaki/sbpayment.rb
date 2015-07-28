@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-RSpec.describe "Credit API gehavior" do
+RSpec.describe "Credit API behavior" do
   before do
-    @params = Sbpayment::Parameters::Credit.new({
+    @params = Sbpayment::Parameters::Api::Credit::Authorization.new({
       merchant_id: "30132",
       service_id: "002",
       cust_code: "SPSTestUser0001",
@@ -32,12 +32,12 @@ RSpec.describe "Credit API gehavior" do
   end
 
   it "returns expected response" do
-    VCR.use_cassette 'credit-api' do
+    VCR.use_cassette 'api-credit-authorization' do
       client = Sbpayment::Client.new(sandbox: true)
       res = client.request(:credit, @params)
 
       expect = client.request(:credit, @params)
-      expect(res['id']).to eq 'ST01-00101-101'
+      expect(res['id']).to eq 'ST01-00111-101'
       expect(res['res_result'].first).to eq 'OK'
     end
   end
