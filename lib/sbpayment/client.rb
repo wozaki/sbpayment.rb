@@ -1,12 +1,13 @@
 module Sbpayment
   class Client
+    DEFAULT_HEADERS = { 'content-type' => 'text/xml' }
+
     def initialize(sandbox: false)
       @sandbox = sandbox
     end
 
-    def request(method, params, headers = {})
-      # TODO handle method
-      headers.merge!({'content-type' => 'text/xml'})
+    def request(action, params, headers = {})
+      headers.merge! DEFAULT_HEADERS
       url = @sandbox ? Sbpayment::SANDBOX_URL : Sbpayment::PRODUCTION_URL # TODO consider private environment
 
       conn = Faraday.new(url: url)
