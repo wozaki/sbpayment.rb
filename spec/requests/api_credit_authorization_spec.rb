@@ -35,8 +35,6 @@ RSpec.describe "Credit API behavior" do
     VCR.use_cassette 'api-credit-authorization' do
       client = Sbpayment::Client.new(sandbox: true)
       res = client.request(:credit, @params)
-
-      expect = client.request(:credit, @params)
       expect(res['id']).to eq 'ST01-00111-101'
       expect(res['res_result'].first).to eq 'OK'
     end
