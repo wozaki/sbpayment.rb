@@ -8,7 +8,6 @@ require 'builder/xmlmarkup'
 
 require 'sbpayment/version'
 require 'sbpayment/const'
-require 'sbpayment/client'
-require 'sbpayment/parameters/base'
+require 'sbpayment/configuration'
 
-Dir[File.join __dir__, 'sbpayment/parameters/**/*.rb'].each { |file| require file }
+Dir[File.join __dir__, 'sbpayment/api/**/*.rb'].each { |file| require file }
