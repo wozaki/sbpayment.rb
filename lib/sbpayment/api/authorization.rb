@@ -30,7 +30,7 @@ module Sbpayment
 
         tag 'pay_option_manage'
         key :cust_manage_flg
-        key :cardbrand_return_flg, default: -> { '1' }
+        key :cardbrand_return_flg, default: '1'
       end
 
       tag 'sps-api-request', id: 'ST01-00111-101'
@@ -46,11 +46,11 @@ module Sbpayment
       key :free2, type: :M
       key :free3, type: :M
       key :order_rowno
-      key :sps_cust_info_return_flg, default: -> { '1' }
+      key :sps_cust_info_return_flg, default: '1'
       many :dtls
       key :pay_method_info, class: PayMethodInfo
       key :pay_option_manage, class: PayOptionManage
-      key :encrypted_flg, default: -> { '1' }
+      key :encrypted_flg, default: '1'
       key :request_date, default: -> { Time.now.strftime('%Y%m%d%H%M%S') }
       key :limit_second
       key :sps_hashcode

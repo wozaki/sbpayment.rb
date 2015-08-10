@@ -12,8 +12,3 @@ module Sbpayment
     end
   end
 end
-
-
-
-
-

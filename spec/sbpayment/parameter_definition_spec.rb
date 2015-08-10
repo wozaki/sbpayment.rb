@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'sbpayment/parameter_definition'
 require 'rexml/document'
 
-describe Sbpayment::ParameterDefinition do 
+describe Sbpayment::ParameterDefinition do
   class Example
     include Sbpayment::ParameterDefinition
 
@@ -22,13 +22,14 @@ describe Sbpayment::ParameterDefinition do
     tag 'Examples', attr: 'value'
     key :foo, type: :M
     key :bar, encrypt: true
-    key :baz, default: -> { 'default value' }
+    key :baz, default: 'default value'
+    key :qux, default: -> { 'default value' }
     many :items
     key :option, class: Option
     key :sps_hashcode
   end
 
-  before do 
+  before do
     Sbpayment.configure do |x|
       x.cipher_code = SecureRandom.hex
       x.cipher_iv   = SecureRandom.hex
@@ -44,12 +45,12 @@ describe Sbpayment::ParameterDefinition do
     @doc = REXML::Document.new @obj.to_sbps_xml(need_encrypt: true)
   end
 
-  it 'has xml_tag and xml_attributes' do 
+  it 'has xml_tag and xml_attributes' do
     expect(Example.xml_tag).to eq 'Examples'
     expect(Example.xml_attributes).to eq(attr: 'value')
   end
 
-  describe 'to_sbps_xml' do 
+  describe 'to_sbps_xml' do
     it 'type option' do
       val = REXML::XPath.first(@doc, '/Examples/foo').text
       expect(Base64.strict_decode64(val)).to eq 'foo'
@@ -72,18 +73,24 @@ describe Sbpayment::ParameterDefinition do
       expect(REXML::XPath.first(@doc, '/Examples/opt/color').text).to eq 'red'
     end
 
-    it 'default option' do 
-      expect(REXML::XPath.first(@doc, '/Examples/baz').text).to eq 'default value'
+    context 'default option' do
+      it 'has default option when default option is not proc' do
+        expect(REXML::XPath.first(@doc, '/Examples/baz').text).to eq 'default value'
+      end
+
+      it 'has default option when default option is proc' do
+        expect(REXML::XPath.first(@doc, '/Examples/qux').text).to eq 'default value'
+      end
     end
   end
 
-  describe 'update_sps_hashcode' do 
+  describe 'update_sps_hashcode' do
     before do
       @obj.update_sps_hashcode
     end
 
-    it 'update sps_hashcode' do 
-      expect(@obj.sps_hashcode).to eq Digest::SHA1.hexdigest('foo' + 'bar' + 'default value' + 'item a' + 'item b' + 'red' + Sbpayment.config.hashkey)
+    it 'update sps_hashcode' do
+      expect(@obj.sps_hashcode).to eq Digest::SHA1.hexdigest('foo' + 'bar' + 'default value' + 'default value' + 'item a' + 'item b' + 'red' + Sbpayment.config.hashkey)
     end
   end
 end

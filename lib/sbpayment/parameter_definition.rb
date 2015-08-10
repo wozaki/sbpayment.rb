@@ -1,3 +1,5 @@
+require 'base64'
+require 'digest/sha1'
 require 'builder/xmlmarkup'
 require_relative 'crypto'
 
@@ -16,7 +18,7 @@ module Sbpayment
         Key.new(name, { position: keys.size + 1 }.merge(options)).tap do |key|
           keys[key.name] = key
 
-          define_method key.rname do 
+          define_method key.rname do
             if instance_variable_defined? key.ivar
               instance_variable_get key.ivar
             else
@@ -62,7 +64,7 @@ module Sbpayment
     def values
       keys.values.reject(&:exclude).sort_by(&:position).flat_map do |key|
         value = read_params key.name
-        case 
+        case
         when key.klass == String
           value
         when key.klass == Array
@@ -84,12 +86,12 @@ module Sbpayment
     def to_sbps_xml(root: true, indent: 2, need_encrypt: false)
       xml = Builder::XmlMarkup.new indent: indent
       xml.instruct! :xml, encoding: 'Shift_JIS' if root
-      xml.tag! self.class.xml_tag, (self.class.xml_attributes || {}) do 
+      xml.tag! self.class.xml_tag, (self.class.xml_attributes || {}) do
         keys.values.sort_by(&:position).each do |key|
           value = read_params key.name
-          case 
+          case
           when key.klass == Array
-            xml.tag! key.xml_tag do 
+            xml.tag! key.xml_tag do
               value.each do |val|
                 xml << val.to_sbps_xml(root: false, indent: indent + 2, need_encrypt: need_encrypt)
               end
@@ -145,7 +147,7 @@ module Sbpayment
       end
 
       def default
-        options[:default] && options[:default].call || klass.new
+        options[:default] && options[:default].is_a?(Proc) ? options[:default].call : options[:default] || klass.new
       end
 
       def array?

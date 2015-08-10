@@ -1,3 +1,4 @@
+require 'xmlsimple'
 require_relative 'shallow_hash'
 require_relative 'decrypt_parameters'
 
