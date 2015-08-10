@@ -8,7 +8,7 @@ module Sbpayment
         include ParameterDefinition
 
         tag 'pay_option_manage'
-        key :cardbrand_return_flg, default: -> { '1' }
+        key :cardbrand_return_flg, default: '1'
       end
 
       tag 'sps-api-request', id: 'MG01-00101-101'
@@ -16,9 +16,9 @@ module Sbpayment
       key :service_id,  default: -> { Sbpayment.config.service_id }
       key :sps_transaction_id
       key :tracking_id
-      key :response_info_type, default: -> { '2' }
+      key :response_info_type, default: '2'
       key :pay_option_manage, class: PayOptionManage
-      key :encrypted_flg, default: -> { '1' }
+      key :encrypted_flg, default: '1'
       key :request_date, default: -> { Time.now.strftime('%Y%m%d%H%M%S') }
       key :limit_second
       key :sps_hashcode

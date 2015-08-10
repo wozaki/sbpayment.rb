@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe 'Credit API behavior' do 
-  before do 
+describe 'Credit API behavior' do
+  before do
     Sbpayment.configure do |x|
       x.sandbox = true
       x.merchant_id = '30132'
@@ -78,7 +78,7 @@ describe 'Credit API behavior' do
       end
     end
 
-    it 'works' do 
+    it 'works' do
       # authorization part
       req = Sbpayment::API::AuthorizationRequest.new
       req.encrypted_flg = '0'

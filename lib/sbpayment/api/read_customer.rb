@@ -8,17 +8,17 @@ module Sbpayment
         include ParameterDefinition
 
         tag 'pay_option_manage'
-        key :cardbrand_return_flg, default: -> { '1' }
+        key :cardbrand_return_flg, default: '1'
       end
 
       tag 'sps-api-request', id: 'MG02-00104-101'
       key :merchant_id, default: -> { Sbpayment.config.merchant_id }
       key :service_id,  default: -> { Sbpayment.config.service_id }
       key :cust_code
-      key :sps_cust_info_return_flg, default: -> { '1' }
-      key :response_info_type, default: -> { '2' }
+      key :sps_cust_info_return_flg, default: '1'
+      key :response_info_type, default: '2'
       key :pay_option_manage, class: PayOptionManage
-      key :encrypted_flg, default: -> { '1' }
+      key :encrypted_flg, default: '1'
       key :request_date, default: -> { Time.now.strftime('%Y%m%d%H%M%S') }
       key :limit_second
       key :sps_hashcode

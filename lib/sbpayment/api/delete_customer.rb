@@ -8,8 +8,8 @@ module Sbpayment
       key :merchant_id, default: -> { Sbpayment.config.merchant_id }
       key :service_id,  default: -> { Sbpayment.config.service_id }
       key :cust_code
-      key :sps_cust_info_return_flg, default: -> { '1' }
-      key :encrypted_flg, default: -> { '1' }
+      key :sps_cust_info_return_flg, default: '1'
+      key :encrypted_flg, default: '1'
       key :request_date, default: -> { Time.now.strftime('%Y%m%d%H%M%S') }
       key :limit_second
       key :sps_hashcode
