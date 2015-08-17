@@ -5,29 +5,7 @@ http_interactions:
     uri: https://30132002:8435dbd48f2249807ec216c3d5ecab714264cc4a@stbfep.sps-system.com/api/xmlapi.do
     body:
       encoding: UTF-8
-      string: |
-        <?xml version="1.0" encoding="Shift_JIS"?>
-        <sps-api-request id="MG02-00101-101">
-          <merchant_id>30132</merchant_id>
-          <service_id>002</service_id>
-          <cust_code>0d9057e3086cee7f5405482e73d0efa2</cust_code>
-          <sps_cust_info_return_flg>1</sps_cust_info_return_flg>
-        <pay_method_info>
-            <cc_number>4242424242424242</cc_number>
-            <cc_expiration>202001</cc_expiration>
-            <security_code>000</security_code>
-            <resrv1></resrv1>
-            <resrv2></resrv2>
-            <resrv3></resrv3>
-        </pay_method_info>
-        <pay_option_manage>
-            <cardbrand_return_flg>1</cardbrand_return_flg>
-        </pay_option_manage>
-          <encrypted_flg>0</encrypted_flg>
-          <request_date>20150806192728</request_date>
-          <limit_second></limit_second>
-          <sps_hashcode>d53e997b9027d4f32f859b86ce732f775469e735</sps_hashcode>
-        </sps-api-request>
+      string: <?xml version="1.0" encoding="Shift_JIS"?><sps-api-request id="MG02-00101-101"><merchant_id>30132</merchant_id><service_id>002</service_id><cust_code>81f63b87b8c1667021dfe36bca5960c9</cust_code><sps_cust_info_return_flg>1</sps_cust_info_return_flg><pay_method_info><cc_number>4242424242424242</cc_number><cc_expiration>202001</cc_expiration><security_code>000</security_code><resrv1>g2WDWINng4aBW4NVgVs=</resrv1></pay_method_info><pay_option_manage><cardbrand_return_flg>1</cardbrand_return_flg></pay_option_manage><encrypted_flg>0</encrypted_flg><request_date>20150819164412</request_date><sps_hashcode>076082a3e7a284e26458a31d9019c861902390d4</sps_hashcode></sps-api-request>
     headers:
       User-Agent:
       - Faraday v0.9.1
@@ -43,11 +21,140 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 06 Aug 2015 10:27:29 GMT
+      - Wed, 19 Aug 2015 07:44:13 GMT
       Server:
       - Apache
       Set-Cookie:
-      - JSESSIONID=0FDDE467BF524540C78DDC649AD5A0D2.fep215; Path=/api
+      - JSESSIONID=59429DD2BE985CE88E1D9F93267E5277.fep214; Path=/api
+      Pragma:
+      - No-cache
+      Cache-Control:
+      - no-cache,no-store,max-age=0
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cteonnt-Length:
+      - '579'
+      Connection:
+      - close
+      Content-Type:
+      - text/xml;charset=Shift_JIS
+      Content-Language:
+      - ja
+      Content-Length:
+      - '292'
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        <?xml version='1.0' encoding='Shift_JIS' ?>
+          <sps-api-response id="MG02-00101-101">
+            <res_result>OK</res_result>
+            <res_sps_transaction_id>B30132002MG020010110100123818758</res_sps_transaction_id>
+            <res_pay_method_info>
+              <cardbrand_code>V</cardbrand_code>
+            </res_pay_method_info>
+            <res_sps_info>
+              <res_sps_cust_no>301332380749</res_sps_cust_no>
+              <res_sps_payment_no>001</res_sps_payment_no>
+            </res_sps_info>
+            <res_process_date>20150819164414</res_process_date>
+            <res_err_code/>
+            <res_date>20150819164414</res_date>
+          </sps-api-response>
+    http_version: 
+  recorded_at: Wed, 19 Aug 2015 07:44:14 GMT
+- request:
+    method: post
+    uri: https://30132002:8435dbd48f2249807ec216c3d5ecab714264cc4a@stbfep.sps-system.com/api/xmlapi.do
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="Shift_JIS"?><sps-api-request id="MG02-00104-101"><merchant_id>30132</merchant_id><service_id>002</service_id><cust_code>81f63b87b8c1667021dfe36bca5960c9</cust_code><sps_cust_info_return_flg>1</sps_cust_info_return_flg><response_info_type>2</response_info_type><pay_option_manage><cardbrand_return_flg>1</cardbrand_return_flg></pay_option_manage><encrypted_flg>0</encrypted_flg><request_date>20150819164414</request_date><sps_hashcode>f5445782a7fad21e734e9529cd0971990a2a9812</sps_hashcode></sps-api-request>
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Content-Type:
+      - text/xml
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 19 Aug 2015 07:44:15 GMT
+      Server:
+      - Apache
+      Set-Cookie:
+      - JSESSIONID=370DF60EA1C48AC79DDBC001AFF3B735.fep214; Path=/api
+      Pragma:
+      - No-cache
+      Cache-Control:
+      - no-cache,no-store,max-age=0
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cteonnt-Length:
+      - '745'
+      Connection:
+      - close
+      Content-Type:
+      - text/xml;charset=Shift_JIS
+      Content-Language:
+      - ja
+      Content-Length:
+      - '361'
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        <?xml version='1.0' encoding='Shift_JIS' ?>
+          <sps-api-response id="MG02-00104-101">
+            <res_result>OK</res_result>
+            <res_sps_transaction_id>B30132002MG020010410100123818767</res_sps_transaction_id>
+            <res_pay_method_info>
+              <cc_number>************4242</cc_number>
+              <cc_expiration>202001</cc_expiration>
+              <cardbrand_code>V</cardbrand_code>
+              <resrv1>g2WDWINng4aBW4NVgVs=</resrv1>
+              <resrv2/>
+              <resrv3/>
+            </res_pay_method_info>
+            <res_sps_info>
+              <res_sps_cust_no>301332380749</res_sps_cust_no>
+              <res_sps_payment_no>001</res_sps_payment_no>
+            </res_sps_info>
+            <res_process_date>20150819164415</res_process_date>
+            <res_err_code/>
+            <res_date>20150819164415</res_date>
+          </sps-api-response>
+    http_version: 
+  recorded_at: Wed, 19 Aug 2015 07:44:14 GMT
+- request:
+    method: post
+    uri: https://30132002:8435dbd48f2249807ec216c3d5ecab714264cc4a@stbfep.sps-system.com/api/xmlapi.do
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="Shift_JIS"?><sps-api-request id="MG02-00102-101"><merchant_id>30132</merchant_id><service_id>002</service_id><cust_code>81f63b87b8c1667021dfe36bca5960c9</cust_code><sps_cust_info_return_flg>1</sps_cust_info_return_flg><pay_method_info><cc_number>4012888888881881</cc_number><cc_expiration>202212</cc_expiration><security_code>000</security_code><resrv1>g2WDWINng4aBW4NVgVsx</resrv1></pay_method_info><pay_option_manage><cardbrand_return_flg>1</cardbrand_return_flg></pay_option_manage><encrypted_flg>0</encrypted_flg><request_date>20150819164414</request_date><sps_hashcode>d0972c0a85695fe839e5cf407e4756caba226949</sps_hashcode></sps-api-request>
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Content-Type:
+      - text/xml
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 19 Aug 2015 07:44:15 GMT
+      Server:
+      - Apache
+      Set-Cookie:
+      - JSESSIONID=581379DB26E27FA09338BB35AFB74ECB.fep214; Path=/api
       Pragma:
       - No-cache
       Cache-Control:
@@ -68,209 +175,28 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |
         <?xml version='1.0' encoding='Shift_JIS' ?>
-          <sps-api-response id="MG02-00101-101">
-            <res_result>OK</res_result>
-            <res_sps_transaction_id>B30132002MG020010110100123020742</res_sps_transaction_id>
-            <res_pay_method_info>
-              <cardbrand_code>V</cardbrand_code>
-            </res_pay_method_info>
-            <res_sps_info>
-              <res_sps_cust_no>849884008397</res_sps_cust_no>
-              <res_sps_payment_no>001</res_sps_payment_no>
-            </res_sps_info>
-            <res_process_date>20150806192730</res_process_date>
-            <res_err_code/>
-            <res_date>20150806192730</res_date>
-          </sps-api-response>
-    http_version: 
-  recorded_at: Thu, 06 Aug 2015 10:27:30 GMT
-- request:
-    method: post
-    uri: https://30132002:8435dbd48f2249807ec216c3d5ecab714264cc4a@stbfep.sps-system.com/api/xmlapi.do
-    body:
-      encoding: UTF-8
-      string: |
-        <?xml version="1.0" encoding="Shift_JIS"?>
-        <sps-api-request id="MG02-00104-101">
-          <merchant_id>30132</merchant_id>
-          <service_id>002</service_id>
-          <cust_code>0d9057e3086cee7f5405482e73d0efa2</cust_code>
-          <sps_cust_info_return_flg>1</sps_cust_info_return_flg>
-          <response_info_type>2</response_info_type>
-        <pay_option_manage>
-            <cardbrand_return_flg>1</cardbrand_return_flg>
-        </pay_option_manage>
-          <encrypted_flg>0</encrypted_flg>
-          <request_date>20150806192730</request_date>
-          <limit_second></limit_second>
-          <sps_hashcode>a44cfe7e53c5d04cd935029098e4dadc29026f99</sps_hashcode>
-        </sps-api-request>
-    headers:
-      User-Agent:
-      - Faraday v0.9.1
-      Content-Type:
-      - text/xml
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Thu, 06 Aug 2015 10:27:30 GMT
-      Server:
-      - Apache
-      Set-Cookie:
-      - JSESSIONID=728642DFB8904BA1131FF87167273704.fep214; Path=/api
-      Pragma:
-      - No-cache
-      Cache-Control:
-      - no-cache,no-store,max-age=0
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
-      Cteonnt-Length:
-      - '717'
-      Connection:
-      - close
-      Content-Type:
-      - text/xml;charset=Shift_JIS
-      Content-Language:
-      - ja
-      Content-Length:
-      - '339'
-    body:
-      encoding: ASCII-8BIT
-      string: |
-        <?xml version='1.0' encoding='Shift_JIS' ?>
-          <sps-api-response id="MG02-00104-101">
-            <res_result>OK</res_result>
-            <res_sps_transaction_id>B30132002MG020010410100123020751</res_sps_transaction_id>
-            <res_pay_method_info>
-              <cc_number>************4242</cc_number>
-              <cc_expiration>202001</cc_expiration>
-              <cardbrand_code>V</cardbrand_code>
-              <resrv1/>
-              <resrv2/>
-              <resrv3/>
-            </res_pay_method_info>
-            <res_sps_info>
-              <res_sps_cust_no>849884008397</res_sps_cust_no>
-              <res_sps_payment_no>001</res_sps_payment_no>
-            </res_sps_info>
-            <res_process_date>20150806192731</res_process_date>
-            <res_err_code/>
-            <res_date>20150806192731</res_date>
-          </sps-api-response>
-    http_version: 
-  recorded_at: Thu, 06 Aug 2015 10:27:30 GMT
-- request:
-    method: post
-    uri: https://30132002:8435dbd48f2249807ec216c3d5ecab714264cc4a@stbfep.sps-system.com/api/xmlapi.do
-    body:
-      encoding: UTF-8
-      string: |
-        <?xml version="1.0" encoding="Shift_JIS"?>
-        <sps-api-request id="MG02-00102-101">
-          <merchant_id>30132</merchant_id>
-          <service_id>002</service_id>
-          <cust_code>0d9057e3086cee7f5405482e73d0efa2</cust_code>
-          <sps_cust_info_return_flg>1</sps_cust_info_return_flg>
-        <pay_method_info>
-            <cc_number>4012888888881881</cc_number>
-            <cc_expiration>202212</cc_expiration>
-            <security_code>000</security_code>
-            <resrv1></resrv1>
-            <resrv2></resrv2>
-            <resrv3></resrv3>
-        </pay_method_info>
-        <pay_option_manage>
-            <cardbrand_return_flg>1</cardbrand_return_flg>
-        </pay_option_manage>
-          <encrypted_flg>0</encrypted_flg>
-          <request_date>20150806192730</request_date>
-          <limit_second></limit_second>
-          <sps_hashcode>34393cc611bb88d56f3a6ac1d6664daa40ada197</sps_hashcode>
-        </sps-api-request>
-    headers:
-      User-Agent:
-      - Faraday v0.9.1
-      Content-Type:
-      - text/xml
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Thu, 06 Aug 2015 10:27:31 GMT
-      Server:
-      - Apache
-      Set-Cookie:
-      - JSESSIONID=59CF9DBBBD5A5BC6C2FE5C935CAF6E0C.fep215; Path=/api
-      Pragma:
-      - No-cache
-      Cache-Control:
-      - no-cache,no-store,max-age=0
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
-      Cteonnt-Length:
-      - '579'
-      Connection:
-      - close
-      Content-Type:
-      - text/xml;charset=Shift_JIS
-      Content-Language:
-      - ja
-      Content-Length:
-      - '295'
-    body:
-      encoding: ASCII-8BIT
-      string: |
-        <?xml version='1.0' encoding='Shift_JIS' ?>
           <sps-api-response id="MG02-00102-101">
             <res_result>OK</res_result>
-            <res_sps_transaction_id>B30132002MG020010210100123020760</res_sps_transaction_id>
+            <res_sps_transaction_id>B30132002MG020010210100123818776</res_sps_transaction_id>
             <res_pay_method_info>
               <cardbrand_code>V</cardbrand_code>
             </res_pay_method_info>
             <res_sps_info>
-              <res_sps_cust_no>849884008397</res_sps_cust_no>
+              <res_sps_cust_no>301332380749</res_sps_cust_no>
               <res_sps_payment_no>001</res_sps_payment_no>
             </res_sps_info>
-            <res_process_date>20150806192732</res_process_date>
+            <res_process_date>20150819164417</res_process_date>
             <res_err_code/>
-            <res_date>20150806192732</res_date>
+            <res_date>20150819164417</res_date>
           </sps-api-response>
     http_version: 
-  recorded_at: Thu, 06 Aug 2015 10:27:32 GMT
+  recorded_at: Wed, 19 Aug 2015 07:44:16 GMT
 - request:
     method: post
     uri: https://30132002:8435dbd48f2249807ec216c3d5ecab714264cc4a@stbfep.sps-system.com/api/xmlapi.do
     body:
       encoding: UTF-8
-      string: |
-        <?xml version="1.0" encoding="Shift_JIS"?>
-        <sps-api-request id="MG02-00104-101">
-          <merchant_id>30132</merchant_id>
-          <service_id>002</service_id>
-          <cust_code>0d9057e3086cee7f5405482e73d0efa2</cust_code>
-          <sps_cust_info_return_flg>1</sps_cust_info_return_flg>
-          <response_info_type>2</response_info_type>
-        <pay_option_manage>
-            <cardbrand_return_flg>1</cardbrand_return_flg>
-        </pay_option_manage>
-          <encrypted_flg>0</encrypted_flg>
-          <request_date>20150806192732</request_date>
-          <limit_second></limit_second>
-          <sps_hashcode>66a99892175f7665c89fbb742cc3b4198500ed79</sps_hashcode>
-        </sps-api-request>
+      string: <?xml version="1.0" encoding="Shift_JIS"?><sps-api-request id="MG02-00104-101"><merchant_id>30132</merchant_id><service_id>002</service_id><cust_code>81f63b87b8c1667021dfe36bca5960c9</cust_code><sps_cust_info_return_flg>1</sps_cust_info_return_flg><response_info_type>2</response_info_type><pay_option_manage><cardbrand_return_flg>1</cardbrand_return_flg></pay_option_manage><encrypted_flg>0</encrypted_flg><request_date>20150819164416</request_date><sps_hashcode>7fd008bdfb7e1b1b7df9752a0dbb98c867c23359</sps_hashcode></sps-api-request>
     headers:
       User-Agent:
       - Faraday v0.9.1
@@ -286,11 +212,11 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 06 Aug 2015 10:27:33 GMT
+      - Wed, 19 Aug 2015 07:44:17 GMT
       Server:
       - Apache
       Set-Cookie:
-      - JSESSIONID=790DFBEEBEBF85A699B03B9592D74921.fep215; Path=/api
+      - JSESSIONID=E5C96E0E9B7EE3032D2A625261D20B53.fep214; Path=/api
       Pragma:
       - No-cache
       Cache-Control:
@@ -298,7 +224,7 @@ http_interactions:
       Expires:
       - Thu, 01 Jan 1970 00:00:00 GMT
       Cteonnt-Length:
-      - '717'
+      - '745'
       Connection:
       - close
       Content-Type:
@@ -306,49 +232,38 @@ http_interactions:
       Content-Language:
       - ja
       Content-Length:
-      - '342'
+      - '364'
     body:
       encoding: ASCII-8BIT
       string: |
         <?xml version='1.0' encoding='Shift_JIS' ?>
           <sps-api-response id="MG02-00104-101">
             <res_result>OK</res_result>
-            <res_sps_transaction_id>B30132002MG020010410100123020779</res_sps_transaction_id>
+            <res_sps_transaction_id>B30132002MG020010410100123818794</res_sps_transaction_id>
             <res_pay_method_info>
               <cc_number>************1881</cc_number>
               <cc_expiration>202212</cc_expiration>
               <cardbrand_code>V</cardbrand_code>
-              <resrv1/>
+              <resrv1>g2WDWINng4aBW4NVgVsx</resrv1>
               <resrv2/>
               <resrv3/>
             </res_pay_method_info>
             <res_sps_info>
-              <res_sps_cust_no>849884008397</res_sps_cust_no>
+              <res_sps_cust_no>301332380749</res_sps_cust_no>
               <res_sps_payment_no>001</res_sps_payment_no>
             </res_sps_info>
-            <res_process_date>20150806192733</res_process_date>
+            <res_process_date>20150819164417</res_process_date>
             <res_err_code/>
-            <res_date>20150806192733</res_date>
+            <res_date>20150819164417</res_date>
           </sps-api-response>
     http_version: 
-  recorded_at: Thu, 06 Aug 2015 10:27:32 GMT
+  recorded_at: Wed, 19 Aug 2015 07:44:16 GMT
 - request:
     method: post
     uri: https://30132002:8435dbd48f2249807ec216c3d5ecab714264cc4a@stbfep.sps-system.com/api/xmlapi.do
     body:
       encoding: UTF-8
-      string: |
-        <?xml version="1.0" encoding="Shift_JIS"?>
-        <sps-api-request id="MG02-00103-101">
-          <merchant_id>30132</merchant_id>
-          <service_id>002</service_id>
-          <cust_code>0d9057e3086cee7f5405482e73d0efa2</cust_code>
-          <sps_cust_info_return_flg>1</sps_cust_info_return_flg>
-          <encrypted_flg>0</encrypted_flg>
-          <request_date>20150806192732</request_date>
-          <limit_second></limit_second>
-          <sps_hashcode>b1e394485bfa631b9e18370527b45cf9afb0769d</sps_hashcode>
-        </sps-api-request>
+      string: <?xml version="1.0" encoding="Shift_JIS"?><sps-api-request id="MG02-00103-101"><merchant_id>30132</merchant_id><service_id>002</service_id><cust_code>81f63b87b8c1667021dfe36bca5960c9</cust_code><sps_cust_info_return_flg>1</sps_cust_info_return_flg><encrypted_flg>0</encrypted_flg><request_date>20150819164416</request_date><sps_hashcode>8d7859a6b3feebe62295754e2e3bfc90deabe2c3</sps_hashcode></sps-api-request>
     headers:
       User-Agent:
       - Faraday v0.9.1
@@ -364,11 +279,11 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 06 Aug 2015 10:27:33 GMT
+      - Wed, 19 Aug 2015 07:44:17 GMT
       Server:
       - Apache
       Set-Cookie:
-      - JSESSIONID=E1E1507FB197A43FF607471642FADB7E.fep214; Path=/api
+      - JSESSIONID=4DCFBDCE7B3E42370876D6CBC4366277.fep214; Path=/api
       Pragma:
       - No-cache
       Cache-Control:
@@ -384,22 +299,22 @@ http_interactions:
       Content-Language:
       - ja
       Content-Length:
-      - '264'
+      - '263'
     body:
       encoding: ASCII-8BIT
       string: |
         <?xml version='1.0' encoding='Shift_JIS' ?>
           <sps-api-response id="MG02-00103-101">
             <res_result>OK</res_result>
-            <res_sps_transaction_id>B30132002MG020010310100123020788</res_sps_transaction_id>
+            <res_sps_transaction_id>B30132002MG020010310100123818800</res_sps_transaction_id>
             <res_sps_info>
-              <res_sps_cust_no>849884008397</res_sps_cust_no>
+              <res_sps_cust_no>301332380749</res_sps_cust_no>
               <res_sps_payment_no>001</res_sps_payment_no>
             </res_sps_info>
-            <res_process_date>20150806192733</res_process_date>
+            <res_process_date>20150819164418</res_process_date>
             <res_err_code/>
-            <res_date>20150806192733</res_date>
+            <res_date>20150819164418</res_date>
           </sps-api-response>
     http_version: 
-  recorded_at: Thu, 06 Aug 2015 10:27:33 GMT
+  recorded_at: Wed, 19 Aug 2015 07:44:17 GMT
 recorded_with: VCR 2.9.3

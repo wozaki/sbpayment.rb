@@ -1,7 +1,8 @@
 require 'base64'
 require 'digest/sha1'
-require 'builder/xmlmarkup'
 require_relative 'crypto'
+require_relative 'sbps_xml'
+require_relative 'sbps_hashcode'
 
 module Sbpayment
   module ParameterDefinition
@@ -44,6 +45,9 @@ module Sbpayment
       end
     end
 
+    include SbpsHashcode
+    include SbpsXML
+
     def initialize(*arg, &blk)
       super
       keys.each_key { |name| read_params name }
@@ -53,64 +57,20 @@ module Sbpayment
       self.class.keys
     end
 
-    def attributes
-      {}.tap do |hash|
-        keys.values.sort_by(&:position).each do |key|
-          hash[key.name] = read_params key.name
-        end
-      end
-    end
-
-    def values
-      keys.values.reject(&:exclude).sort_by(&:position).flat_map do |key|
-        value = read_params key.name
-        case
-        when key.klass == String
-          value
-        when key.klass == Array
-          value.flat_map(&:values)
-        else
-          value.values
-        end
-      end
-    end
-
-    def generate_sps_hashcode(encoding: 'Shift_JIS', hashkey: Sbpayment.config.hashkey)
-      Digest::SHA1.hexdigest(values.map(&:to_s).map(&:strip).join.encode(encoding) + hashkey)
-    end
-
-    def update_sps_hashcode
-      write_params :sps_hashcode, generate_sps_hashcode
-    end
-
-    def to_sbps_xml(root: true, indent: 2, need_encrypt: false)
-      xml = Builder::XmlMarkup.new indent: indent
-      xml.instruct! :xml, encoding: 'Shift_JIS' if root
-      xml.tag! self.class.xml_tag, (self.class.xml_attributes || {}) do
-        keys.values.sort_by(&:position).each do |key|
-          value = read_params key.name
-          case
-          when key.klass == Array
-            xml.tag! key.xml_tag do
-              value.each do |val|
-                xml << val.to_sbps_xml(root: false, indent: indent + 2, need_encrypt: need_encrypt)
-              end
-            end
-          when key.klass == String
-            xml.tag! key.xml_tag, key.cast(value, need_encrypt: need_encrypt)
-          else
-            xml << value.to_sbps_xml(root: false, indent: indent + 2, need_encrypt: need_encrypt)
-          end
-        end
-      end
-    end
-
     def read_params(name)
       __send__ keys.fetch(name.to_s).rname
     end
 
     def write_params(name, value)
       __send__ keys.fetch(name.to_s).wname, value
+    end
+
+    def attributes
+      {}.tap do |hash|
+        keys.values.sort_by(&:position).each do |key|
+          hash[key.name] = read_params key.name
+        end
+      end
     end
 
     def update_attributes(hash)
@@ -154,10 +114,19 @@ module Sbpayment
         klass == Array
       end
 
-      def cast(value, need_encrypt: false)
-        value = (value || default).to_s
-        value = Base64.strict_encode64 value.encode('Shift_JIS') if type == :M
-        (need_encrypt && encrypt) ? Base64.strict_encode64(Sbpayment::Crypto.encrypt(value)) : value
+      def cast_for_hashcode(value)
+        (value || default).to_s.encode('Shift_JIS')
+      end
+
+      def cast_for_xml(value, need_encrypt: false)
+        value = cast_for_hashcode value
+        if need_encrypt && encrypt
+          Base64.strict_encode64 Sbpayment::Crypto.encrypt value
+        elsif type == :M
+          Base64.strict_encode64 value
+        else
+          value
+        end
       end
     end
   end

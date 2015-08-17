@@ -11,9 +11,9 @@ module Sbpayment
         key :cc_number,     encrypt: true
         key :cc_expiration, encrypt: true
         key :security_code, encrypt: true
-        key :resrv1,        encrypt: true
-        key :resrv2,        encrypt: true
-        key :resrv3,        encrypt: true
+        key :resrv1,        encrypt: true, type: :M
+        key :resrv2,        encrypt: true, type: :M
+        key :resrv3,        encrypt: true, type: :M
       end
       class PayOptionManage
         include ParameterDefinition

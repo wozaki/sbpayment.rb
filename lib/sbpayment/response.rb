@@ -1,12 +1,12 @@
 require 'xmlsimple'
 require_relative 'shallow_hash'
-require_relative 'decrypt_parameters'
+require_relative 'decode_parameters'
 
 module Sbpayment
   class Response
     using ShallowHash
 
-    include DecryptParameters
+    include DecodeParameters
 
     attr_reader :status, :headers, :body
 
@@ -14,7 +14,7 @@ module Sbpayment
       @status  = status
       @headers = headers
       @body    = XmlSimple.xml_in(body, forcearray: false, noattr: true, keytosymbol: true, suppressempty: true).shallow
-      @body    = decrypt @body if need_decrypt
+      @body    = decode @body, need_decrypt
     end
   end
 end

@@ -31,6 +31,9 @@ module Sbpayment
                               res_pay_method_info.resrv1
                               res_pay_method_info.resrv2
                               res_pay_method_info.resrv3).freeze
+      DECODE_PARAMETERS = %i(res_pay_method_info.resrv1
+                             res_pay_method_info.resrv2
+                             res_pay_method_info.resrv3).freeze
     end
   end
 end
