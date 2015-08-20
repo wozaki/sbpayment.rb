@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Customer API behavior' do 
+describe 'Customer API behavior' do
   let(:cust_code) { SecureRandom.hex }
 
   around do |e|
@@ -9,7 +9,7 @@ describe 'Customer API behavior' do
     end
   end
 
-  before do 
+  before do
     Sbpayment.configure do |x|
       x.sandbox = true
       x.merchant_id = '30132'
@@ -20,13 +20,14 @@ describe 'Customer API behavior' do
     end
   end
 
-  it 'CRUD' do 
+  it 'CRUD' do
     req = Sbpayment::API::CreateCustomerRequest.new
     req.cust_code = cust_code
     req.encrypted_flg = '0'
     req.pay_method_info.cc_number     = '4242424242424242'
     req.pay_method_info.cc_expiration = '202001'
     req.pay_method_info.security_code = '000'
+    req.pay_method_info.resrv1        = 'テストユーザー'
     res = req.perform
     expect(res.status).to eq 200
     expect(res.headers['content-type']).to include 'text/xml'
@@ -43,6 +44,7 @@ describe 'Customer API behavior' do
     expect(res.body[:'res_pay_method_info.cc_number']).to eq '************4242'
     expect(res.body[:'res_pay_method_info.cc_expiration']).to eq '202001'
     expect(res.body[:'res_pay_method_info.cardbrand_code']).to eq 'V'
+    expect(res.body[:'res_pay_method_info.resrv1']).to eq 'テストユーザー'
 
     req = Sbpayment::API::UpdateCustomerRequest.new
     req.cust_code = cust_code
@@ -50,6 +52,7 @@ describe 'Customer API behavior' do
     req.pay_method_info.cc_number     = '4012888888881881'
     req.pay_method_info.cc_expiration = '202212'
     req.pay_method_info.security_code = '000'
+    req.pay_method_info.resrv1        = 'テストユーザー1'
     res = req.perform
     expect(res.status).to eq 200
     expect(res.headers['content-type']).to include 'text/xml'
@@ -66,6 +69,7 @@ describe 'Customer API behavior' do
     expect(res.body[:'res_pay_method_info.cc_number']).to eq '************1881'
     expect(res.body[:'res_pay_method_info.cc_expiration']).to eq '202212'
     expect(res.body[:'res_pay_method_info.cardbrand_code']).to eq 'V'
+    expect(res.body[:'res_pay_method_info.resrv1']).to eq 'テストユーザー1'
 
     req = Sbpayment::API::DeleteCustomerRequest.new
     req.cust_code = cust_code
