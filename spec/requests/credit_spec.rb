@@ -22,7 +22,7 @@ describe 'Credit API behavior' do
     it 'works' do
       # authorization part
 
-      req = Sbpayment::API::AuthorizationRequest.new
+      req = Sbpayment::API::Credit::AuthorizationRequest.new
       req.encrypted_flg = '0'
       req.cust_code = 'Quipper Customer ID'
       req.order_id  = SecureRandom.hex
@@ -30,7 +30,7 @@ describe 'Credit API behavior' do
       req.item_name = 'item'
       req.amount    = 1250
 
-      detail = Sbpayment::API::AuthorizationRequest::Detail.new
+      detail = Sbpayment::API::Credit::AuthorizationRequest::Detail.new
       detail.dtl_rowno      = 1
       detail.dtl_item_id    = 'item_1'
       detail.dtl_item_name  = 'item 1'
@@ -38,7 +38,7 @@ describe 'Credit API behavior' do
       detail.dtl_amount     = 500
       req.dtls << detail
 
-      detail = Sbpayment::API::AuthorizationRequest::Detail.new
+      detail = Sbpayment::API::Credit::AuthorizationRequest::Detail.new
       detail.dtl_rowno      = 2
       detail.dtl_item_id    = 'item_2'
       detail.dtl_item_name  = 'item 2'
@@ -59,7 +59,7 @@ describe 'Credit API behavior' do
 
       # commit part
 
-      req = Sbpayment::API::CommitRequest.new
+      req = Sbpayment::API::Credit::CommitRequest.new
       req.sps_transaction_id  = res.body[:res_sps_transaction_id]
       req.tracking_id         = res.body[:res_tracking_id]
       req.processing_datetime = res.body[:res_process_date]
@@ -80,7 +80,7 @@ describe 'Credit API behavior' do
 
     it 'works' do
       # authorization part
-      req = Sbpayment::API::AuthorizationRequest.new
+      req = Sbpayment::API::Credit::AuthorizationRequest.new
       req.encrypted_flg = '0'
       req.cust_code = 'Quipper Customer ID'
       req.order_id  = SecureRandom.hex
@@ -104,7 +104,7 @@ describe 'Credit API behavior' do
 
       # inquire part
 
-      req = Sbpayment::API::InquireAuthorizationRequest.new
+      req = Sbpayment::API::Credit::InquireAuthorizationRequest.new
       req.encrypted_flg       = '0'
       req.sps_transaction_id  = authorization_sps_transaction_id
       req.tracking_id         = authorization_tracking_id
@@ -119,7 +119,7 @@ describe 'Credit API behavior' do
 
       # commit part
 
-      req = Sbpayment::API::CommitRequest.new
+      req = Sbpayment::API::Credit::CommitRequest.new
       req.sps_transaction_id  = authorization_sps_transaction_id
       req.tracking_id         = authorization_tracking_id
       req.processing_datetime = authorization_processing_datetime
@@ -131,7 +131,7 @@ describe 'Credit API behavior' do
 
       # inquire part
 
-      req = Sbpayment::API::InquireAuthorizationRequest.new
+      req = Sbpayment::API::Credit::InquireAuthorizationRequest.new
       req.encrypted_flg       = '0'
       req.sps_transaction_id  = authorization_sps_transaction_id
       req.tracking_id         = authorization_tracking_id
@@ -146,7 +146,7 @@ describe 'Credit API behavior' do
 
       # refund part
 
-      req = Sbpayment::API::RefundRequest.new
+      req = Sbpayment::API::Credit::RefundRequest.new
       req.sps_transaction_id  = authorization_sps_transaction_id
       req.tracking_id         = authorization_tracking_id
       req.processing_datetime = authorization_processing_datetime
@@ -158,7 +158,7 @@ describe 'Credit API behavior' do
 
       # inquire part
 
-      req = Sbpayment::API::InquireAuthorizationRequest.new
+      req = Sbpayment::API::Credit::InquireAuthorizationRequest.new
       req.encrypted_flg       = '0'
       req.sps_transaction_id  = authorization_sps_transaction_id
       req.tracking_id         = authorization_tracking_id
