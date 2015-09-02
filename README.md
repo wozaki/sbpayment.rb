@@ -38,9 +38,9 @@ Action Name         | sps-api-request id | Request class                        
 
 ###### Docomo
 
-Action Name                                      | sps-api-request id | Request class                                     |
----                                              | ---                | ---                                               |
-ドコモケータイ払い 取消・返金要求処理 (簡易継続) | `ST02-00303-401`   | `Sbpayment::API::Docomo::SimplifiedRefundRequest` |
+Action Name                                      | sps-api-request id | Request class                                            |
+---                                              | ---                | ---                                                      |
+ドコモケータイ払い 取消・返金要求処理 (簡易継続) | `ST02-00303-401`   | `Sbpayment::API::Docomo::SimplifiedRefundRequest`        |
 
 ###### au
 
