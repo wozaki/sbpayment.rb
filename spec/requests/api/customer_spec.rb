@@ -21,7 +21,7 @@ describe 'Customer API behavior' do
   end
 
   it 'CRUD' do
-    req = Sbpayment::API::CreateCustomerRequest.new
+    req = Sbpayment::API::Credit::CreateCustomerRequest.new
     req.cust_code = cust_code
     req.encrypted_flg = '0'
     req.pay_method_info.cc_number     = '4242424242424242'
@@ -34,7 +34,7 @@ describe 'Customer API behavior' do
     expect(res.body[:res_result]).to eq 'OK'
     expect(res.body[:'res_pay_method_info.cardbrand_code']).to eq 'V'
 
-    req = Sbpayment::API::ReadCustomerRequest.new
+    req = Sbpayment::API::Credit::ReadCustomerRequest.new
     req.cust_code = cust_code
     req.encrypted_flg = '0'
     res = req.perform
@@ -46,7 +46,7 @@ describe 'Customer API behavior' do
     expect(res.body[:'res_pay_method_info.cardbrand_code']).to eq 'V'
     expect(res.body[:'res_pay_method_info.resrv1']).to eq 'テストユーザー'
 
-    req = Sbpayment::API::UpdateCustomerRequest.new
+    req = Sbpayment::API::Credit::UpdateCustomerRequest.new
     req.cust_code = cust_code
     req.encrypted_flg = '0'
     req.pay_method_info.cc_number     = '4012888888881881'
@@ -59,7 +59,7 @@ describe 'Customer API behavior' do
     expect(res.body[:res_result]).to eq 'OK'
     expect(res.body[:'res_pay_method_info.cardbrand_code']).to eq 'V'
 
-    req = Sbpayment::API::ReadCustomerRequest.new
+    req = Sbpayment::API::Credit::ReadCustomerRequest.new
     req.cust_code = cust_code
     req.encrypted_flg = '0'
     res = req.perform
@@ -71,7 +71,7 @@ describe 'Customer API behavior' do
     expect(res.body[:'res_pay_method_info.cardbrand_code']).to eq 'V'
     expect(res.body[:'res_pay_method_info.resrv1']).to eq 'テストユーザー1'
 
-    req = Sbpayment::API::DeleteCustomerRequest.new
+    req = Sbpayment::API::Credit::DeleteCustomerRequest.new
     req.cust_code = cust_code
     req.encrypted_flg = '0'
     res = req.perform
