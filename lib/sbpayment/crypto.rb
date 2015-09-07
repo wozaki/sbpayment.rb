@@ -5,11 +5,13 @@ module Sbpayment
   module Crypto
     module_function
 
-    def encrypt(data, key: Sbpayment.config.cipher_code, iv: Sbpayment.config.cipher_iv)
+    def encrypt(data)
+      self.check_cipher_keys!
+
       cipher = OpenSSL::Cipher.new 'DES3'
       cipher.encrypt
-      cipher.key = key
-      cipher.iv  = iv
+      cipher.key = Sbpayment.config.cipher_code
+      cipher.iv  = Sbpayment.config.cipher_iv
       cipher.padding = 0
 
       q, r = data.bytesize.divmod 8
@@ -18,14 +20,22 @@ module Sbpayment
       cipher.update(data) + cipher.final
     end
 
-    def decrypt(data, key: Sbpayment.config.cipher_code, iv: Sbpayment.config.cipher_iv)
+    def decrypt(data)
+      self.check_cipher_keys!
+
       cipher = OpenSSL::Cipher.new 'DES3'
       cipher.decrypt
-      cipher.key = key
-      cipher.iv  = iv
+      cipher.key = Sbpayment.config.cipher_code
+      cipher.iv  = Sbpayment.config.cipher_iv
       cipher.padding = 0
 
       (cipher.update(data) + cipher.final).sub(/ +\z/, '') # or use String#rstrip
+    end
+
+    def check_cipher_keys!
+      if Sbpayment.config.cipher_code.nil? || Sbpayment.config.cipher_iv.nil?
+        raise ArgumentError.new 'Either Sbpayment.config.cipher_code or Sbpayment.config.cipher_iv are not defined.'
+      end
     end
   end
 end
