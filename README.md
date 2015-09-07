@@ -4,8 +4,6 @@ A client library for [sbpayment (Softbank Payment Service)](http://www.sbpayment
 
 ## Installation
 
-TODO: Publish
-
 ```ruby
 gem 'sbpayment'
 ```
