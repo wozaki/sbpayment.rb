@@ -5,7 +5,7 @@ require 'sbpayment/version'
 Gem::Specification.new do |spec|
   spec.name          = "sbpayment"
   spec.version       = Sbpayment::VERSION
-  spec.authors       = ["Kohei Hasegawa"]
+  spec.authors       = ["Kohei Hasegawa", "miyucy"]
   spec.email         = ["ameutau@gmail.com"]
   spec.homepage      = "https://github.com/quipper/sbpayment.rb"
   spec.summary       = %q{A client library for sbpayment (Softbank Payment Service) written in Ruby.}
