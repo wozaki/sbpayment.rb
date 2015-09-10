@@ -20,5 +20,6 @@ module Sbpayment
     attr_accessor :merchant_id, :service_id
     attr_accessor :cipher_code, :cipher_iv
     attr_accessor :hashkey
+    attr_accessor :proxy_uri, :proxy_user, :proxy_password
   end
 end

@@ -22,6 +22,11 @@ module Sbpayment
         builder.request :retry, max: RETRY_TIMES, interval: RETRY_INTERVAL, exceptions: [Errno::ETIMEDOUT, Timeout::Error, Faraday::Error::TimeoutError]
         builder.request :basic_auth, config.basic_auth_user, config.basic_auth_password
         builder.adapter Faraday.default_adapter
+
+        if config.proxy_uri
+          options = { uri: config.proxy_uri, user: config.proxy_user, password: config.proxy_password }
+          builder.proxy options
+        end
       end
 
       update_sps_hashcode
