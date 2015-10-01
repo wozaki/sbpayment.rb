@@ -1,6 +1,7 @@
 require 'sbpayment'
 require 'erb'
 require 'pp'
+require 'securerandom'
 
 Sbpayment.configure do |x|
   x.sandbox = true
@@ -10,16 +11,16 @@ Sbpayment.configure do |x|
 end
 
 req = Sbpayment::Link::PurchaseRequest.new
-req.pay_method       = ''
-req.cust_code        = '498b1fd98ebeb074ff1d50f2e2720a1a'
-req.order_id         = '9eb2fced282c5bfc67c2417217ca2682'
+req.pay_method       = 'docomo'
+req.cust_code        = SecureRandom.hex
+req.order_id         = SecureRandom.hex
 req.item_id          = 'Item ID'
 req.item_name        = '継続課金'
 req.amount           = 980
-req.pay_type         = 2
-req.auto_charge_type = 0
+req.pay_type         = 0
+req.auto_charge_type = ""
 req.service_type     = 0
-req.div_settele      = 0
+req.div_settele      = ""
 req.success_url      = 'http://example.com/success'
 req.cancel_url       = 'http://example.com/cancel'
 req.error_url        = 'http://example.com/error'
