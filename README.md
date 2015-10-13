@@ -14,6 +14,10 @@ gem 'sbpayment'
 
 Implemented actions are only for what we needed so far. Feel free to add here if you need it.
 
+### Caveat
+
+Currently client side encoding is supported only for UTF-8. (UTF-8 to Shift-JIS)
+
 #### API
 
 ##### Credit
