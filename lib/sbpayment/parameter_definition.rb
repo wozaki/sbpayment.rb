@@ -2,6 +2,7 @@ require 'base64'
 require 'digest/sha1'
 require_relative 'crypto'
 require_relative 'sbps_xml'
+require_relative 'encoding'
 require_relative 'sbps_hashcode'
 
 module Sbpayment
@@ -57,18 +58,25 @@ module Sbpayment
       self.class.keys
     end
 
-    def read_params(name)
-      __send__ keys.fetch(name.to_s).rname
+    def read_params(name, utf8: false)
+      key = keys.fetch name.to_s
+      value = __send__ key.rname
+
+      if utf8 && key.type == :M
+        Sbpayment::Encoding.sjis2utf8 value
+      else
+        value
+      end
     end
 
     def write_params(name, value)
       __send__ keys.fetch(name.to_s).wname, value
     end
 
-    def attributes
+    def attributes(utf8: false)
       {}.tap do |hash|
         keys.values.sort_by(&:position).each do |key|
-          hash[key.name] = read_params key.name
+          hash[key.name] = read_params key.name, utf8: utf8
         end
       end
     end
