@@ -14,22 +14,18 @@ module Sbpayment
 
       # change encoding encrypted multibyte string
       (encrypted & parameters.keys & encoded).each do |key|
-        parameters[key] = sjis2utf8 parameters[key]
+        parameters[key] = Sbpayment::Encoding.sjis2utf8 parameters[key]
       end
 
       # change encoding non-encrypted multibyte string
       ((encoded - encrypted) & parameters.keys).each do |key|
-        parameters[key] = sjis2utf8 Base64.strict_decode64 parameters[key]
+        parameters[key] = Sbpayment::Encoding.sjis2utf8 Base64.strict_decode64 parameters[key]
       end
 
       parameters
     end
 
     private
-
-    def sjis2utf8(str)
-      str.force_encoding('Shift_JIS').encode('UTF-8')
-    end
 
     def fetch_const(name, default=[])
       self.class.const_defined?(name) ? self.class.const_get(name) : default
