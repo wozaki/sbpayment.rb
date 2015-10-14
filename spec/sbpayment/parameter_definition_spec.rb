@@ -93,4 +93,26 @@ describe Sbpayment::ParameterDefinition do
       expect(@obj.sps_hashcode).to eq Digest::SHA1.hexdigest('ふー'.encode('Shift_JIS') + 'bar' + 'default value' + 'default value' + 'item a' + 'item b' + 'red' + Sbpayment.config.hashkey).encode 'Shift_JIS'
     end
   end
+
+  describe 'update_attributes' do
+    context 'when sbpayment returns as sjis and update as sjis' do
+      before do
+        @obj.update_attributes({foo: 'ふー'.encode('Shift_JIS')});
+      end
+
+      it 'updates sps_hashcode as sjis' do
+        expect(@obj.attributes['foo']).to eq 'ふー'.encode('Shift_JIS')
+      end
+    end
+
+    context 'when sbpayment returns as sjis and update as utf8' do
+      before do
+        @obj.update_attributes({foo: 'ふー'.encode('Shift_JIS')}, utf8: true);
+      end
+
+      it 'updates sps_hashcode as utf8' do
+        expect(@obj.attributes['foo']).to eq 'ふー'
+      end
+    end
+  end
 end

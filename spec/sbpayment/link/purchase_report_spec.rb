@@ -21,16 +21,4 @@ describe Sbpayment::Link::PurchaseReport do
   it 'does not return an error' do
     expect { @report.validate_sps_hashcode }.to_not raise_error
   end
-
-  context 'when utf8 option is not given' do
-    it 'show multibyte record as sjis' do
-      expect(@report.attributes['item_name']).to eq CGI.unescape("%8Cp%91%B1%89%DB%8B%E0".encode 'Shift_JIS')
-    end
-  end
-
-  context 'when utf8 option is given' do
-    it 'show multibyte record as utf8' do
-      expect(@report.attributes(utf8: true)['item_name']).to eq '継続課金'
-    end
-  end
 end

@@ -58,33 +58,31 @@ module Sbpayment
       self.class.keys
     end
 
-    def read_params(name, utf8: false)
+    def read_params(name)
       key = keys.fetch name.to_s
-      value = __send__ key.rname
-
-      if utf8 && key.type == :M
-        Sbpayment::Encoding.sjis2utf8 value
-      else
-        value
-      end
+      __send__ key.rname
     end
 
     def write_params(name, value)
       __send__ keys.fetch(name.to_s).wname, value
     end
 
-    def attributes(utf8: false)
+    def attributes
       {}.tap do |hash|
         keys.values.sort_by(&:position).each do |key|
-          hash[key.name] = read_params key.name, utf8: utf8
+          hash[key.name] = read_params key.name
         end
       end
     end
 
-    def update_attributes(hash)
+    def update_attributes(hash, utf8: false)
       hash.each do |name, value|
         next unless keys.key? name.to_s
-        write_params name, value
+        if utf8
+          write_params(name, value.encode('UTF-8', 'Shift_JIS'))
+        else
+          write_params(name, value)
+        end
       end
     end
 

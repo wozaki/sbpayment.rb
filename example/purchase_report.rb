@@ -14,9 +14,9 @@ params = POST.encode('Shift_JIS').split('&').map { |e| e.split '=', 2 }.to_h
 params.each_value { |value| value.replace CGI.unescape(value) }
 
 report = Sbpayment::Link::PurchaseReport.new
-report.update_attributes params
+report.update_attributes params, utf8: true
 report.validate_sps_hashcode
-report.attributes utf8: true
+pp report.attributes
 # => {"res_payinfo_key"=>"",
 #     "service_id"=>"001",
 #     "auto_charge_type"=>"0",
