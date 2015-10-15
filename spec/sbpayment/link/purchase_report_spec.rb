@@ -15,10 +15,10 @@ describe Sbpayment::Link::PurchaseReport do
     params.each_value { |value| value.replace CGI.unescape(value) }
 
     @report = Sbpayment::Link::PurchaseReport.new
-    @report.update_attributes params
+    @report.update_attributes params, utf8: true
   end
 
   it 'does not return an error' do
-    expect { @report.validate_sps_hashcode }.to_not raise_error
+    expect { @report.validate_sps_hashcode! }.to_not raise_error
   end
 end
