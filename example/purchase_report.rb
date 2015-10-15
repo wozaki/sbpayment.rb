@@ -15,7 +15,7 @@ params.each_value { |value| value.replace CGI.unescape(value) }
 
 report = Sbpayment::Link::PurchaseReport.new
 report.update_attributes params, utf8: true
-report.validate_sps_hashcode
+report.validate_sps_hashcode!
 pp report.attributes
 # => {"res_payinfo_key"=>"",
 #     "service_id"=>"001",

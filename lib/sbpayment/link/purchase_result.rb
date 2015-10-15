@@ -42,8 +42,8 @@ module Sbpayment
       key :limit_second
       key :sps_hashcode
 
-      def validate_sps_hashcode
-        raise 'invalid sps_hashcode' unless sps_hashcode == generate_sps_hashcode
+      def validate_sps_hashcode!
+        raise 'invalid sps_hashcode' unless sps_hashcode.downcase == generate_sps_hashcode
       end
     end
   end
