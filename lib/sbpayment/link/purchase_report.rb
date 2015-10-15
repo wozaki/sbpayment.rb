@@ -43,7 +43,7 @@ module Sbpayment
       key :sps_hashcode
 
       def validate_sps_hashcode!
-        raise 'invalid sps_hashcode' unless sps_hashcode.downcase == generate_sps_hashcode(encoding: 'UTF-8')
+        raise InvalidSpsHashcodeError unless sps_hashcode.downcase == generate_sps_hashcode(encoding: 'UTF-8')
       end
     end
   end
