@@ -37,7 +37,7 @@ describe Sbpayment::ParameterDefinition do
     end
 
     @obj = Example.new
-    @obj.foo = 'foo'
+    @obj.foo = 'ふー'
     @obj.bar = 'bar'
     @obj.items.push Example::Item.new.tap { |i| i.name = 'item a' }
     @obj.items.push Example::Item.new.tap { |i| i.name = 'item b' }
@@ -53,7 +53,7 @@ describe Sbpayment::ParameterDefinition do
   describe 'to_sbps_xml' do
     it 'type option' do
       val = REXML::XPath.first(@doc, '/Examples/foo').text
-      expect(Base64.strict_decode64(val)).to eq 'foo'
+      expect(Sbpayment::Encoding.sjis2utf8 Base64.strict_decode64(val)).to eq 'ふー'
     end
 
     it 'encrypt option' do
@@ -90,7 +90,29 @@ describe Sbpayment::ParameterDefinition do
     end
 
     it 'update sps_hashcode' do
-      expect(@obj.sps_hashcode).to eq Digest::SHA1.hexdigest('foo' + 'bar' + 'default value' + 'default value' + 'item a' + 'item b' + 'red' + Sbpayment.config.hashkey)
+      expect(@obj.sps_hashcode).to eq Digest::SHA1.hexdigest('ふー'.encode('Shift_JIS') + 'bar' + 'default value' + 'default value' + 'item a' + 'item b' + 'red' + Sbpayment.config.hashkey).encode 'Shift_JIS'
+    end
+  end
+
+  describe 'update_attributes' do
+    context 'when sbpayment returns as sjis and update as sjis' do
+      before do
+        @obj.update_attributes({foo: 'ふー'.encode('Shift_JIS')});
+      end
+
+      it 'updates attributes as sjis' do
+        expect(@obj.attributes['foo']).to eq 'ふー'.encode('Shift_JIS')
+      end
+    end
+
+    context 'when sbpayment returns as sjis and update as utf8' do
+      before do
+        @obj.update_attributes({foo: 'ふー'.encode('Shift_JIS')}, utf8: true);
+      end
+
+      it 'updates attributes as utf8' do
+        expect(@obj.attributes['foo']).to eq 'ふー'
+      end
     end
   end
 end
