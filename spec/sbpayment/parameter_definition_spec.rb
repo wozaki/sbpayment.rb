@@ -100,7 +100,7 @@ describe Sbpayment::ParameterDefinition do
         @obj.update_attributes({foo: 'ふー'.encode('Shift_JIS')});
       end
 
-      it 'updates sps_hashcode as sjis' do
+      it 'updates attributes as sjis' do
         expect(@obj.attributes['foo']).to eq 'ふー'.encode('Shift_JIS')
       end
     end
@@ -110,7 +110,7 @@ describe Sbpayment::ParameterDefinition do
         @obj.update_attributes({foo: 'ふー'.encode('Shift_JIS')}, utf8: true);
       end
 
-      it 'updates sps_hashcode as utf8' do
+      it 'updates attributes as utf8' do
         expect(@obj.attributes['foo']).to eq 'ふー'
       end
     end
