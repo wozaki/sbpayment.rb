@@ -14,7 +14,7 @@ module Sbpayment
 
         tag 'sps-api-request', id: 'ST02-00307-101'
         key :merchant_id, default: -> { Sbpayment.config.merchant_id }
-        key :service_id,  default: -> { Sbpayment.config.service_id }
+        key :service_id,  default: -> { Sbpayment.config.default_service_id }
         key :sps_transaction_id
         key :tracking_id
         key :processing_datetime

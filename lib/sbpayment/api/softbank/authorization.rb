@@ -7,7 +7,7 @@ module Sbpayment
       class AuthorizationRequest < Request
         tag 'sps-api-request', id: 'ST01-00104-405'
         key :merchant_id, default: -> { Sbpayment.config.merchant_id }
-        key :service_id,  default: -> { Sbpayment.config.service_id }
+        key :service_id,  default: -> { Sbpayment.config.default_service_id }
         key :tracking_id
         key :cust_code
         key :order_id
