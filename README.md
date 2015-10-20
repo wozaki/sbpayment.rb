@@ -10,6 +10,33 @@ gem 'sbpayment'
 
 ## Usage
 
+### Example
+
+See [example](example).
+
+### Configure Options
+
+```rb
+Sbpayment.configure do |x|
+  x.sandbox = true
+  ...
+end
+```
+
+Properties          | Description                                                             | Default | Required | Type    |
+---                 | ---                                                                     | ---     | ---      | ---     |
+sandbox             | when this option is true, endpoint will be SBPS Developer Console's one | false   | false    | Boolean |
+basic_auth_user     | use basic auth user given by sbpayment                                  | ""      | false    | String  |
+basic_auth_password | user basic auth password given by sbpayment                             | ""      | false    | String  |
+merchant_id         | merchant_id for a params to request                                     | ""      | true     | String  |
+service_id          | service_id for a params to request                                      | ""      | true     | String  |
+cipher_code         | use cipher_code given by sbpayment                                      | ""      | false    | String  |
+cipher_iv           | use cipher_iv given by sbpayment                                        | ""      | false    | String  |
+hashkey             | use hashkey given by sbpayment                                          | ""      | true     | String  |
+proxy_uri           | set forward proxy uri if you need                                       | ""      | false    | String  |
+proxy_user          | set forward proxy's user if you need                                    | ""      | false    | String  |
+proxy_password      | set forward proxy's password if you need                                | ""      | false    | String  |
+
 ### Supported Actions
 
 Implemented actions are only for what we needed so far. Feel free to add here if you need it.
