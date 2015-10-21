@@ -14,7 +14,7 @@ describe Sbpayment::Configuration do
         Sbpayment.config.allow_multiple_service_id = true
       end
 
-      it 'raises an error' do
+      it 'raises a ConfigrationError' do
         expect{ Sbpayment.config.default_service_id }.to raise_error(Sbpayment::ConfigrationError)
       end
     end
