@@ -15,7 +15,7 @@ RSpec.shared_context "prepare purchase result params" do
     params.each_value { |value| value.replace CGI.unescape(value) }
 
     @result = Sbpayment::Link::PurchaseResult.new
-    @result.update_attributes params
+    @result.update_attributes params, utf8: true
   end
 end
 

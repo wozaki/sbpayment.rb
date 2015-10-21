@@ -6,55 +6,27 @@ describe Sbpayment::Configuration do
     it 'returns configuration store' do
       expect(Sbpayment.config).to be_instance_of Sbpayment::Config
     end
+  end
 
-    context '#multiple_service_id?' do
-      context 'with default mode' do
-        it 'returns false' do
-          expect(Sbpayment.config.multiple_service_id?).to be(false)
-        end
+  describe '#default_service_id' do
+    context 'when allow_multiple_service_id is true' do
+      before do
+        Sbpayment.config.allow_multiple_service_id = true
+      end
+
+      it 'raises a ConfigrationError' do
+        expect{ Sbpayment.config.default_service_id }.to raise_error(Sbpayment::ConfigrationError)
       end
     end
 
-    context '#enable_multiple_service_id' do
-      before(:context) do
-        Sbpayment.config.enable_multiple_service_id
+    context 'when allow_multiple_service_id is false (default)' do
+      before do
+        Sbpayment.config.allow_multiple_service_id = false
+        Sbpayment.config.service_id = 'foo'
       end
 
-      it 'enables multiple_service_id mode' do
-        expect(Sbpayment.config.multiple_service_id?).to be(true)
-      end
-    end
-
-    context '#disable_multiple_service_id' do
-      before(:context) do
-        Sbpayment.config.disable_multiple_service_id
-      end
-
-      it 'disables multiple_service_id mode' do
-        expect(Sbpayment.config.multiple_service_id?).to be(false)
-      end
-    end
-
-    context 'when calling service_id without a customized value' do
-      context 'with enabled multiple service_id' do
-        before(:context) do
-          Sbpayment.config.enable_multiple_service_id
-        end
-
-        it 'raises a ConfigrationError' do
-          expect{ Sbpayment.config.default_service_id }.to raise_error(Sbpayment::ConfigrationError)
-        end
-      end
-
-      context 'with disabled multiple service_id' do
-        before(:context) do
-          Sbpayment.config.disable_multiple_service_id
-        end
-
-        it 'returns Config#service_id' do
-          expect(Sbpayment.config.default_service_id).not_to be_nil
-          expect(Sbpayment.config.default_service_id).to equal(Sbpayment.config.service_id)
-        end
+      it 'returns service_id' do
+        expect(Sbpayment.config.default_service_id).to eq 'foo'
       end
     end
   end
