@@ -23,19 +23,20 @@ Sbpayment.configure do |x|
 end
 ```
 
-Properties          | Description                                                             | Default | Required | Type    |
----                 | ---                                                                     | ---     | ---      | ---     |
-sandbox             | when this option is true, endpoint will be SBPS Developer Console's one | false   | false    | Boolean |
-basic_auth_user     | use basic auth user given by sbpayment                                  | ""      | false    | String  |
-basic_auth_password | user basic auth password given by sbpayment                             | ""      | false    | String  |
-merchant_id         | merchant_id for a params to request                                     | ""      | true     | String  |
-service_id          | service_id for a params to request                                      | ""      | true     | String  |
-cipher_code         | use cipher_code given by sbpayment                                      | ""      | false    | String  |
-cipher_iv           | use cipher_iv given by sbpayment                                        | ""      | false    | String  |
-hashkey             | use hashkey given by sbpayment                                          | ""      | true     | String  |
-proxy_uri           | set forward proxy uri if you need                                       | ""      | false    | String  |
-proxy_user          | set forward proxy's user if you need                                    | ""      | false    | String  |
-proxy_password      | set forward proxy's password if you need                                | ""      | false    | String  |
+Properties                | Description                                                                                                                       | Default | Required | Type    |
+---                       | ---                                                                                                                               | ---     | ---      | ---     |
+sandbox                   | when this option is true, endpoint will be SBPS Developer Console's one                                                           | false   | false    | Boolean |
+basic_auth_user           | use basic auth user given by sbpayment                                                                                            | ""      | false    | String  |
+basic_auth_password       | user basic auth password given by sbpayment                                                                                       | ""      | false    | String  |
+merchant_id               | merchant_id for a params to request                                                                                               | ""      | true     | String  |
+service_id                | service_id for a params to request                                                                                                | ""      | true     | String  |
+cipher_code               | use cipher_code given by sbpayment                                                                                                | ""      | false    | String  |
+cipher_iv                 | use cipher_iv given by sbpayment                                                                                                  | ""      | false    | String  |
+hashkey                   | use hashkey given by sbpayment                                                                                                    | ""      | true     | String  |
+proxy_uri                 | set forward proxy uri if you need                                                                                                 | ""      | false    | String  |
+proxy_user                | set forward proxy's user if you need                                                                                              | ""      | false    | String  |
+proxy_password            | set forward proxy's password if you need                                                                                          | ""      | false    | String  |
+allow_multiple_service_id | if your application uses multiple service_id from 1 application, set true, then you need to pass service_id every time explicitly | false   | false    | Boolean |
 
 ### Supported Actions
 
