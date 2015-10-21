@@ -26,7 +26,7 @@ module Sbpayment
     attr_accessor :allow_multiple_service_id
 
     def default_service_id
-      if !!allow_multiple_service_id
+      if allow_multiple_service_id
         raise ConfigrationError, 'need to set service_id in multiple service_id mode'
       else
         service_id
