@@ -25,6 +25,11 @@ module Sbpayment
     attr_accessor :proxy_uri, :proxy_user, :proxy_password
     attr_accessor :allow_multiple_service_id
 
+    def initialize
+      @sandbox = false
+      @allow_multiple_service_id = false
+    end
+
     def default_service_id
       if allow_multiple_service_id
         raise ConfigrationError, 'need to set service_id in multiple service_id mode'
