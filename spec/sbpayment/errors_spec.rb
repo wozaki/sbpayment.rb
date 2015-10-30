@@ -1,0 +1,114 @@
+require_relative '../spec_helper'
+require_relative '../../lib/sbpayment/errors'
+
+describe Sbpayment::Error do
+  subject { Sbpayment::Error.superclass }
+  it { is_expected.to equal(StandardError) }
+end
+
+describe Sbpayment::APIError do
+  let!(:defined_api_error) { Sbpayment::APIError.parse '10123203' }
+  let!(:undefined_api_error) { Sbpayment::APIError.parse '11122333' }
+
+  describe '.parse' do
+    it 'parses a valid format to a related error' do
+      expect(Sbpayment::APIError.parse '10123203').to be_an_instance_of(Sbpayment::API10123Error)
+      expect(Sbpayment::APIError.parse '11122333').to be_an_instance_of(Sbpayment::APIUnknownError)
+    end
+
+    it 'raises an ArgumentError when given an invalid format' do
+      expect { Sbpayment::APIError.parse '11122333\n' }.to raise_error(ArgumentError)
+      expect { Sbpayment::APIError.parse '1112!333' }.to raise_error(ArgumentError)
+      expect { Sbpayment::APIError.parse '111223339' }.to raise_error(ArgumentError)
+      expect { Sbpayment::APIError.parse '1112299' }.to raise_error(ArgumentError)
+    end
+  end
+
+  describe '#payment_method' do
+    subject { undefined_api_error.payment_method }
+    it { is_expected.to be_an_instance_of(Sbpayment::APIError::PaymentMethod) }
+  end
+
+  describe '#type' do
+    subject { undefined_api_error.type }
+    it { is_expected.to be_an_instance_of(Sbpayment::APIError::Type) }
+  end
+
+  describe '#item' do
+    subject { undefined_api_error.item }
+    it { is_expected.to be_an_instance_of(Sbpayment::APIError::Item) }
+  end
+
+  describe '#res_err_code' do
+    subject { undefined_api_error.res_err_code }
+    it { is_expected.to eq('11122333') }
+  end
+
+  describe '#to_s' do
+    subject { undefined_api_error.to_s }
+    it { is_expected.to eq('11122333') }
+  end
+
+  describe '#summary' do
+    context 'on a defined APIError' do
+      it 'formats with code and summary' do
+        expect(defined_api_error.summary.unicode_normalize).to eq('method: 101(クレジット), type: 23(クレジットカード使用不可), item: 203(分割回数)')
+      end
+    end
+
+    context 'on an undefined APIError' do
+      it 'formats with code and blank summary' do
+        expect(undefined_api_error.summary).to eq('method: 111(), type: 22(), item: 333()')
+      end
+    end
+  end
+
+  describe '#inspect' do
+    it 'contains summary' do
+      expect(defined_api_error.inspect).to include(defined_api_error.summary)
+    end
+  end
+
+  context 'on a defined APIError' do
+    it 'has specific fields' do
+      expect(defined_api_error.payment_method.code).to eq('101')
+      expect(defined_api_error.payment_method.summary).to eq('クレジット')
+      expect(defined_api_error.type.code).to eq('23')
+      expect(defined_api_error.type.summary).to eq('クレジットカード使用不可')
+      expect(defined_api_error.item.code).to eq('203')
+      expect(defined_api_error.item.summary).to eq('分割回数')
+    end
+  end
+end
+
+describe 'Specific API error' do
+  it 'has ancestors as APIError > API000Error > API00099Error' do
+    expect(Sbpayment::API101Error.superclass).to equal(Sbpayment::APIError)
+    expect(Sbpayment::API10123Error.superclass).to equal(Sbpayment::API101Error)
+  end
+end
+
+describe Sbpayment::APIUnknownError do
+  it 'is a subclass of Sbpayment::APIError' do
+    expect(Sbpayment::APIUnknownError.superclass).to equal(Sbpayment::APIError)
+  end
+end
+
+describe Sbpayment::APIError::PaymentMethod do
+  describe '.fetch' do
+    subject { Sbpayment::APIError::PaymentMethod.fetch '405' }
+    it { is_expected.to be_an_instance_of(Sbpayment::APIError::PaymentMethod) }
+
+    it 'returns another instance when called with another code' do
+      one = Sbpayment::APIError::PaymentMethod.fetch '405'
+      another = Sbpayment::APIError::PaymentMethod.fetch '406'
+      expect(another).not_to equal(one)
+    end
+
+    it 'returns the same instance when called with same code twice' do
+      once = Sbpayment::APIError::PaymentMethod.fetch '405'
+      twice = Sbpayment::APIError::PaymentMethod.fetch '405'
+      expect(twice).to equal(once)
+    end
+  end
+end
