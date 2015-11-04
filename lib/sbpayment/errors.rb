@@ -124,7 +124,7 @@ module Sbpayment
 
     const_set :"APICommonType#{type_code}Error", mod
 
-    root_class_for_unknowns = Class.new(APIUnknownCommonTypeError) do
+    root_class_for_unknowns = Class.new APIUnknownCommonTypeError do
       include mod
 
       self::TYPE = APIError::Type.fetch(type_code)
@@ -134,7 +134,7 @@ module Sbpayment
   end
 
   APIError::PAYMENT_METHOD_DEFINITIONS.each_pair do |payment_method_code, summary|
-    root_class_for_knowns = Class.new(APIKnownError) do
+    root_class_for_knowns = Class.new APIKnownError do
       self::PAYMENT_METHOD = APIError::PaymentMethod.fetch(payment_method_code)
     end
 
@@ -163,7 +163,7 @@ module Sbpayment
     end
 
     definitions.each_pair do |type_code, summary|
-      klass = Class.new(parent) do
+      klass = Class.new parent do
         self::TYPE = parent::Type.fetch(type_code)
       end
 
@@ -172,12 +172,9 @@ module Sbpayment
   end
 
   APIError::ITEM_DEFINITIONS.each_pair do |payment_method_code, definitions|
-    const_get(:"API#{payment_method_code}Error").class_eval do
-      klass = Class.new(APIError::Item) do
-        define_children_from definitions
-      end
-
-      const_set :Item, klass
+    klass = const_get :"API#{payment_method_code}Error"
+    klass::Item = Class.new APIError::Item do
+      define_children_from definitions
     end
   end
 end
