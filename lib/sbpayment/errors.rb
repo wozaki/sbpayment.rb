@@ -49,7 +49,11 @@ module Sbpayment
             if PAYMENT_METHOD_DEFINITIONS.include? payment_method
               Sbpayment.const_get(:"APIUnknown#{payment_method}Error").new type: Type.fetch(type), item: Item.fetch(item)
             else
-              APIUnknownPaymentMethodError.new payment_method: PaymentMethod.fetch(payment_method), type: Type.fetch(type), item: Item.fetch(item)
+              if TYPE_COMMON_DEFINITIONS.include? type
+                Sbpayment.const_get(:"APIUnknownCommonType#{type}Error").new payment_method: PaymentMethod.fetch(payment_method), item: Item.fetch(item)
+              else
+                APIUnknownPaymentMethodError.new payment_method: PaymentMethod.fetch(payment_method), type: Type.fetch(type), item: Item.fetch(item)
+              end
             end
           end
         else
@@ -75,6 +79,22 @@ module Sbpayment
 
   class APIUnknownError < Error
     include APIError
+  end
+
+  class APIUnknownCommonTypeError < APIUnknownError
+    include TypeClassResponsible
+
+    attr_reader :payment_method
+
+    def initialize(error_message=nil, payment_method:, item:)
+      super error_message
+      @payment_method = payment_method
+      @item = item
+    end
+  end
+
+  class APIUnknownErrorWithPaymentMethod < APIUnknownError
+    include PaymentMethodClassResponsible
 
     attr_reader :type
 
@@ -85,17 +105,31 @@ module Sbpayment
     end
   end
 
-  class APIUnknownErrorWithPaymentMethod < APIUnknownError
-    include PaymentMethodClassResponsible
-  end
-
   class APIUnknownPaymentMethodError < APIUnknownError
-    attr_reader :payment_method
+    attr_reader :payment_method, :type
 
     def initialize(error_message=nil, payment_method:, type:, item:)
-      super error_message, type: type, item: item
+      super error_message
+      @type = type
+      @item = item
       @payment_method = payment_method
     end
+  end
+
+  APIError::TYPE_COMMON_DEFINITIONS.each_pair do |type_code, summary|
+    mod = Module.new do
+      include APIError
+    end
+
+    const_set :"APICommonType#{type_code}Error", mod
+
+    root_class_for_unknowns = Class.new(APIUnknownCommonTypeError) do
+      include mod
+
+      const_set :TYPE, APIError::Type.new(code: type_code, summary: summary)
+    end
+
+    const_set :"APIUnknownCommonType#{type_code}Error", root_class_for_unknowns
   end
 
   APIError::PAYMENT_METHOD_DEFINITIONS.each_pair do |payment_method_code, summary|
@@ -104,6 +138,14 @@ module Sbpayment
     end
 
     const_set :"API#{payment_method_code}Error", root_class_for_knowns
+
+    APIError::TYPE_COMMON_DEFINITIONS.each_key do |type_code|
+      root_class = root_class_for_knowns.dup
+      mod = const_get :"APICommonType#{type_code}Error"
+      root_class.include mod
+
+      const_set :"API#{payment_method_code}#{type_code}Error", root_class
+    end
 
     root_class_for_unknowns = Class.new(APIUnknownErrorWithPaymentMethod) do
       self::PAYMENT_METHOD = APIError::PaymentMethod.new(code: payment_method_code, summary: summary)
