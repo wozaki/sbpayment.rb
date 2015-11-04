@@ -21,13 +21,21 @@ module Sbpayment
         private
 
         def inherited(subclass)
+          brothers = if equal? Field
+                       {}
+                     else
+                       @children ||= Hash.new(brothers) { |pool, code| pool[code] = new(code: code) }
+                     end
+
           subclass.class_eval do
-            @children = Hash.new { |pool, code| pool[code] = new(code: code) }
+            @children = brothers.dup
+            @children.default_proc = -> pool, code { pool[code] = new(code: code) }
           end
         end
 
         def define_children_from(definitions)
           definitions.each_pair do |code, summary|
+            raise 'loading conflicted data' if @children.key? code
             @children[code] = new(code: code, summary: summary)
           end
         end
@@ -51,6 +59,8 @@ module Sbpayment
 
     class Type < Field
       PATTERN = /\A[0-9a-zA-Z]{2}\z/
+
+      define_children_from TYPE_COMMON_DEFINITIONS
     end
 
     class Item < Field

@@ -26,12 +26,24 @@ describe Sbpayment::APIError do
       expect { Sbpayment::APIError.parse '1112299' }.to raise_error(ArgumentError)
     end
 
-    context 'with unknown payment_method' do
-      context 'with common types' do
+    context 'with common types' do
+      context 'with unknown payment method' do
         subject { Sbpayment::APIError.parse '11105333' }
 
         it 'returns a APIUnknownCommonType05Error' do
           expect(subject).to be_an_instance_of(Sbpayment::APIUnknownCommonType05Error)
+        end
+
+        it 'knowns the type detail' do
+          expect(subject.type.summary).to eq('桁数エラー')
+        end
+      end
+
+      context 'with known payment method' do
+        subject { Sbpayment::APIError.parse '10105333' }
+
+        it 'returns a API10105Error' do
+          expect(subject).to be_an_instance_of(Sbpayment::API10105Error)
         end
 
         it 'knowns the type detail' do

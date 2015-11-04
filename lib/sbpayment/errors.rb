@@ -119,6 +119,7 @@ module Sbpayment
   APIError::TYPE_COMMON_DEFINITIONS.each_pair do |type_code, summary|
     mod = Module.new do
       include APIError
+      include APIError::TypeClassResponsible
     end
 
     const_set :"APICommonType#{type_code}Error", mod
@@ -126,7 +127,7 @@ module Sbpayment
     root_class_for_unknowns = Class.new(APIUnknownCommonTypeError) do
       include mod
 
-      const_set :TYPE, APIError::Type.new(code: type_code, summary: summary)
+      self::TYPE = APIError::Type.fetch(type_code)
     end
 
     const_set :"APIUnknownCommonType#{type_code}Error", root_class_for_unknowns
@@ -134,13 +135,14 @@ module Sbpayment
 
   APIError::PAYMENT_METHOD_DEFINITIONS.each_pair do |payment_method_code, summary|
     root_class_for_knowns = Class.new(APIKnownError) do
-      self::PAYMENT_METHOD = APIError::PaymentMethod.new(code: payment_method_code, summary: summary)
+      self::PAYMENT_METHOD = APIError::PaymentMethod.fetch(payment_method_code)
     end
 
     const_set :"API#{payment_method_code}Error", root_class_for_knowns
 
     APIError::TYPE_COMMON_DEFINITIONS.each_key do |type_code|
       root_class = root_class_for_knowns.dup
+      root_class::TYPE = APIError::Type.fetch(type_code)
       mod = const_get :"APICommonType#{type_code}Error"
       root_class.include mod
 
@@ -148,16 +150,21 @@ module Sbpayment
     end
 
     root_class_for_unknowns = Class.new(APIUnknownErrorWithPaymentMethod) do
-      self::PAYMENT_METHOD = APIError::PaymentMethod.new(code: payment_method_code, summary: summary)
+      self::PAYMENT_METHOD = APIError::PaymentMethod.fetch(payment_method_code)
     end
 
     const_set :"APIUnknown#{payment_method_code}Error", root_class_for_unknowns
   end
 
   APIError::TYPE_DEFINITIONS.each_pair do |payment_method_code, definitions|
+    parent = const_get :"API#{payment_method_code}Error"
+    parent::Type = Class.new APIError::Type do
+      define_children_from definitions
+    end
+
     definitions.each_pair do |type_code, summary|
-      klass = Class.new(const_get :"API#{payment_method_code}Error") do
-        self::TYPE = APIError::Type.new(code: type_code, summary: summary)
+      klass = Class.new(parent) do
+        self::TYPE = parent::Type.fetch(type_code)
       end
 
       const_set :"API#{payment_method_code}#{type_code}Error", klass
