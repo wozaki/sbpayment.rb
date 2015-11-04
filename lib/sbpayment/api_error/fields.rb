@@ -65,6 +65,8 @@ module Sbpayment
 
     class Item < Field
       PATTERN = /\A[0-9a-zA-Z]{3}\z/
+
+      define_children_from ITEM_COMMON_DEFINITIONS
     end
   end
 end

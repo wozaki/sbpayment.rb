@@ -51,6 +51,32 @@ describe Sbpayment::APIError do
         end
       end
     end
+
+    context 'with common items' do
+      context 'with unknown payment method' do
+        subject { Sbpayment::APIError.parse '11105999' }
+
+        it 'returns a APIUnknownCommonType05Error' do
+          expect(subject).to be_an_instance_of(Sbpayment::APIUnknownCommonType05Error)
+        end
+
+        it 'knowns the item detail' do
+          expect(subject.item.summary).to eq('該当項目なし')
+        end
+      end
+
+      context 'with known payment method' do
+        subject { Sbpayment::APIError.parse '10105999' }
+
+        it 'returns a API10105Error' do
+          expect(subject).to be_an_instance_of(Sbpayment::API10105Error)
+        end
+
+        it 'knowns the type detail' do
+          expect(subject.item.summary).to eq('該当項目なし')
+        end
+      end
+    end
   end
 
   describe '#payment_method' do
