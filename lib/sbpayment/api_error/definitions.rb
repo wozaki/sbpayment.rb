@@ -1,4 +1,4 @@
-module Sbpayment; class APIError
+module Sbpayment; module APIError
 
   PAYMENT_METHOD_DEFINITIONS = {
     '101' => 'クレジット',

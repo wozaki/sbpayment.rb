@@ -7,13 +7,16 @@ describe Sbpayment::Error do
 end
 
 describe Sbpayment::APIError do
-  let!(:defined_api_error) { Sbpayment::APIError.parse '10123203' }
-  let!(:undefined_api_error) { Sbpayment::APIError.parse '11122333' }
+  subject(:defined_api_error) { Sbpayment::APIError.parse '10123203' }
+  subject(:undefined_api_error) { Sbpayment::APIError.parse '11122333' }
 
   describe '.parse' do
     it 'parses a valid format to a related error' do
       expect(Sbpayment::APIError.parse '10123203').to be_an_instance_of(Sbpayment::API10123Error)
-      expect(Sbpayment::APIError.parse '11122333').to be_an_instance_of(Sbpayment::APIUnknownError)
+      expect(Sbpayment::APIError.parse '101K1203').to be_an_instance_of(Sbpayment::API101K1Error)
+      expect(Sbpayment::APIError.parse '40530999').to be_an_instance_of(Sbpayment::API40530Error)
+      expect(Sbpayment::APIError.parse '101ZZ203').to be_an_instance_of(Sbpayment::APIUnknown101Error)
+      expect(Sbpayment::APIError.parse '11122333').to be_an_instance_of(Sbpayment::APIUnknownPaymentMethodError)
     end
 
     it 'raises an ArgumentError when given an invalid format' do
@@ -82,15 +85,39 @@ describe Sbpayment::APIError do
 end
 
 describe 'Specific API error' do
-  it 'has ancestors as APIError > API000Error > API00099Error' do
-    expect(Sbpayment::API101Error.superclass).to equal(Sbpayment::APIError)
+  it 'has ancestors as APIKnownError > API000Error > API00099Error' do
+    expect(Sbpayment::API101Error.superclass).to equal(Sbpayment::APIKnownError)
     expect(Sbpayment::API10123Error.superclass).to equal(Sbpayment::API101Error)
   end
 end
 
 describe Sbpayment::APIUnknownError do
-  it 'is a subclass of Sbpayment::APIError' do
-    expect(Sbpayment::APIUnknownError.superclass).to equal(Sbpayment::APIError)
+  subject(:unknown_root) { Sbpayment::APIUnknownError }
+
+  it 'is a subclass of Error' do
+    expect(unknown_root.superclass).to equal(Sbpayment::Error)
+  end
+
+  it 'includes APIError' do
+    expect(unknown_root).to be < Sbpayment::APIError
+  end
+
+  context Sbpayment::APIUnknownPaymentMethodError do
+    subject { Sbpayment::APIUnknownPaymentMethodError }
+
+    it 'is a subclass of APIUnknownError' do
+      expect(subject.superclass).to equal(unknown_root)
+    end
+  end
+
+  context 'on concrete subclasses' do
+    subject(:payment_method_is_known) { Sbpayment::APIUnknown101Error }
+    subject(:payment_method_is_unknown) { Sbpayment::APIUnknownPaymentMethodError }
+
+    it 'is a subclass of related errors' do
+      expect(payment_method_is_known.superclass).to equal(Sbpayment::APIUnknownErrorWithPaymentMethod)
+      expect(payment_method_is_unknown.superclass).to equal(Sbpayment::APIUnknownError)
+    end
   end
 end
 
@@ -109,6 +136,33 @@ describe Sbpayment::APIError::PaymentMethod do
       once = Sbpayment::APIError::PaymentMethod.fetch '405'
       twice = Sbpayment::APIError::PaymentMethod.fetch '405'
       expect(twice).to equal(once)
+    end
+
+    it 'raises an ArgumentError when given an invalid code' do
+      expect { Sbpayment::APIError::PaymentMethod.fetch '4050' }.to raise_error(ArgumentError)
+    end
+  end
+end
+
+describe Sbpayment::APIError::Type do
+  describe '.fetch' do
+    subject { Sbpayment::APIError::Type.fetch '40' }
+    it { is_expected.to be_an_instance_of(Sbpayment::APIError::Type) }
+
+    it 'returns another instance when called with another code' do
+      one = Sbpayment::APIError::Type.fetch '40'
+      another = Sbpayment::APIError::Type.fetch '41'
+      expect(another).not_to equal(one)
+    end
+
+    it 'returns the same instance when called with same code twice' do
+      once = Sbpayment::APIError::Type.fetch '40'
+      twice = Sbpayment::APIError::Type.fetch '40'
+      expect(twice).to equal(once)
+    end
+
+    it 'raises an ArgumentError when given an invalid code' do
+      expect { Sbpayment::APIError::Type.fetch '405' }.to raise_error(ArgumentError)
     end
   end
 end
