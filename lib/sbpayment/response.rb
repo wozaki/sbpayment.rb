@@ -16,5 +16,18 @@ module Sbpayment
       @body    = XmlSimple.xml_in(body, forcearray: false, noattr: true, keytosymbol: true, suppressempty: true).shallow
       @body    = decode @body, need_decrypt
     end
+
+    def ok_result?
+      body[:res_result] == 'OK'
+    end
+
+    def ng_result?
+      body[:res_result] == 'NG'
+    end
+
+    def error
+      code = body[:res_err_code]
+      code && APIError.parse(code)
+    end
   end
 end

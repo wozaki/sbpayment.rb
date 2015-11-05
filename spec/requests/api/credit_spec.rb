@@ -56,6 +56,8 @@ describe 'Credit API behavior' do
       expect(res.status).to eq 200
       expect(res.headers['content-type']).to include 'text/xml'
       expect(res.body[:res_result]).to eq 'OK'
+      expect(res.ok_result?).to be_truthy
+      expect(res.error).to be_nil
 
       # commit part
 
@@ -68,6 +70,28 @@ describe 'Credit API behavior' do
       expect(res.status).to eq 200
       expect(res.headers['content-type']).to include 'text/xml'
       expect(res.body[:res_result]).to eq 'OK'
+    end
+
+    it 'handles an error' do
+      pending 'How to get failed replies?'
+
+      req = Sbpayment::API::Credit::AuthorizationRequest.new
+      req.encrypted_flg = '0'
+      req.cust_code = 'Quipper Customer ID'
+      req.order_id  = SecureRandom.hex
+      req.item_id   = 'item_1'
+      req.item_name = 'item'
+      req.amount    = 1250
+
+      req.pay_method_info.cc_number = '4242424242424242'
+      req.pay_method_info.cc_expiration = '202001'.reverse
+      req.pay_method_info.security_code = '900'
+      req.pay_method_info.dealings_type = 10
+      req.pay_option_manage.cust_manage_flg = '1'
+
+      res = req.perform
+      expect(res.body[:res_result]).to eq 'NG'
+      expect(res.ok_result?).to be_falsey
     end
   end
 
