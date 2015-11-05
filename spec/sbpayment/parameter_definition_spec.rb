@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'sbpayment/parameter_definition'
 require 'rexml/document'
 
 describe Sbpayment::ParameterDefinition do

@@ -1,5 +1,4 @@
 require_relative '../spec_helper'
-require_relative '../../lib/sbpayment/errors'
 
 describe Sbpayment::Error do
   subject { Sbpayment::Error.superclass }

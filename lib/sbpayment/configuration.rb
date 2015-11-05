@@ -12,7 +12,7 @@ module Sbpayment
   end
   extend Configuration
 
-  class ConfigrationError < StandardError; end
+  class ConfigrationError < Sbpayment::Error; end
 
   class Config
     include Singleton
