@@ -1,4 +1,5 @@
 require 'sbpayment/version'
+require 'sbpayment/errors'
 require 'sbpayment/const'
 require 'sbpayment/configuration'
 require 'sbpayment/link'
