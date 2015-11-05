@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'sbpayment/crypto'
 
 describe Sbpayment::Crypto do
   let(:key)  { SecureRandom.hex 12 }

@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'sbpayment/decode_parameters'
 
 describe Sbpayment::DecodeParameters do
   class Example

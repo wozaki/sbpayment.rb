@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'sbpayment/configuration'
 
 describe Sbpayment::Configuration do
   describe 'config' do

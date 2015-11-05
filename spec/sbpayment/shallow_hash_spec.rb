@@ -1,11 +1,10 @@
 require 'spec_helper'
-require 'sbpayment/shallow_hash'
 
-describe Sbpayment::ShallowHash do 
+describe Sbpayment::ShallowHash do
   using Sbpayment::ShallowHash
 
-  describe 'Hash#shallow' do 
-    it 'returns new hash' do 
+  describe 'Hash#shallow' do
+    it 'returns new hash' do
       h = {
         a: {
           b: {
