@@ -1,5 +1,5 @@
 module Sbpayment
   module Link
-    class InvalidSpsHashcodeError < StandardError; end
+    class InvalidSpsHashcodeError < Sbpayment::Error; end
   end
 end
