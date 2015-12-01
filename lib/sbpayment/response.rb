@@ -17,14 +17,6 @@ module Sbpayment
       @body    = decode @body, need_decrypt
     end
 
-    def ok_result?
-      body[:res_result] == 'OK'
-    end
-
-    def ng_result?
-      body[:res_result] == 'NG'
-    end
-
     def error
       code = body[:res_err_code]
       code && APIError.parse(code)

@@ -56,7 +56,6 @@ describe 'Credit API behavior' do
       expect(res.status).to eq 200
       expect(res.headers['content-type']).to include 'text/xml'
       expect(res.body[:res_result]).to eq 'OK'
-      expect(res.ok_result?).to be_truthy
       expect(res.error).to be_nil
 
       # commit part
@@ -91,7 +90,6 @@ describe 'Credit API behavior' do
 
       res = req.perform
       expect(res.body[:res_result]).to eq 'NG'
-      expect(res.ok_result?).to be_falsey
     end
   end
 
