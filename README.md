@@ -68,15 +68,15 @@ Action Name         | sps-api-request id | Request class                        
 
 ###### Docomo
 
-Action Name                                      | sps-api-request id | Request class                                            |
----                                              | ---                | ---                                                      |
-ドコモケータイ払い 取消・返金要求処理 (簡易継続) | `ST02-00303-401`   | `Sbpayment::API::Docomo::SimplifiedRefundRequest`        |
+Action Name                                      | sps-api-request id | Request class                                           |
+---                                              | ---                | ---                                                     |
+ドコモケータイ払い 取消・返金要求処理 (簡易継続) | `ST02-00303-401`   | `Sbpayment::API::Docomo::SimplifiedCancelRefundRequest` |
 
 ###### au
 
 Action Name                       | sps-api-request id | Request class                       |
 ---                               | ---                | ---                                 |
-auかんたん決済 取消・返金要求処理 | `ST02-00303-402`   | `Sbpayment::API::Au::RefundRequest` |
+auかんたん決済 取消・返金要求処理 | `ST02-00303-402`   | `Sbpayment::API::Au::CancelRefundRequest` |
 
 ###### Softbank
 

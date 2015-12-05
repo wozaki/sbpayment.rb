@@ -3,15 +3,16 @@ require_relative '../../response'
 
 module Sbpayment
   module API
-    module Docomo
-      class SimplifiedRefundRequest < Request
+    module Au
+      class CancelRefundRequest < Request
         class PayOptionManage
           include ParameterDefinition
+
           tag 'pay_option_manage'
-          key :cancel_target_month
+          key :amount
         end
 
-        tag 'sps-api-request', id: 'ST02-00303-401'
+        tag 'sps-api-request', id: 'ST02-00303-402'
         key :merchant_id, default: -> { Sbpayment.config.merchant_id }
         key :service_id,  default: -> { Sbpayment.config.default_service_id }
         key :tracking_id
@@ -21,7 +22,7 @@ module Sbpayment
         key :sps_hashcode
       end
 
-      class SimplifiedRefundResponse < Response
+      class CancelRefundResponse < Response
         DECRYPT_PARAMETERS = %i(res_pay_method_info.res_cancel_type).freeze
       end
     end
