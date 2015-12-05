@@ -23,6 +23,7 @@ module Sbpayment
       end
 
       class CancelRefundResponse < Response
+        DECRYPT_PARAMETERS = %i(res_pay_method_info.res_cancel_type).freeze
       end
     end
   end
