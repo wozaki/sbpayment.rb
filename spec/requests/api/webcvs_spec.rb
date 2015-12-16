@@ -19,7 +19,7 @@ describe 'Webcvs API behavior' do
       end
     end
 
-    it 'works' do
+    xit 'works' do
       # payment part
       req = Sbpayment::API::Webcvs::PaymentRequest.new
 
