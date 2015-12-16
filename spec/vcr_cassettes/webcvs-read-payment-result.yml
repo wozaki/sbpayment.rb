@@ -1,0 +1,110 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://30132002:8435dbd48f2249807ec216c3d5ecab714264cc4a@stbfep.sps-system.com/api/xmlapi.do
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="Shift_JIS"?><sps-api-request id="ST01-00101-701"><merchant_id>30132</merchant_id><service_id>002</service_id><cust_code>Quipper
+        Customer ID</cust_code><order_id>aa9a36d7c68df46250777031498cc55a</order_id><item_id>item_1</item_id><item_name>aXRlbQ==</item_name><amount>1250</amount><order_rowno>1</order_rowno><dtls><dtl><dtl_rowno>1</dtl_rowno><dtl_item_id>item_1</dtl_item_id><dtl_item_name>aXRlbSAx</dtl_item_name><dtl_item_count>2</dtl_item_count><dtl_amount>500</dtl_amount></dtl><dtl><dtl_rowno>2</dtl_rowno><dtl_item_id>item_2</dtl_item_id><dtl_item_name>aXRlbSAy</dtl_item_name><dtl_item_count>1</dtl_item_count><dtl_amount>250</dtl_amount></dtl></dtls><pay_method_info><issue_type>0</issue_type><last_name>gsSCt4LG</last_name><first_name>gUA=</first_name><last_name_kana>g2WDWINn</last_name_kana><first_zip>000</first_zip><second_zip>0000</second_zip><add1>gUA=</add1><add2>gUA=</add2><tel>0312345678</tel><mail>cvs@dummy.com</mail><seiyakudate>20151216</seiyakudate><webcvstype>001</webcvstype><bill_date>20151216</bill_date></pay_method_info><encrypted_flg>0</encrypted_flg><request_date>20151216141554</request_date><sps_hashcode>2388f2577d6f5288f2209fea9459a8082aa70847</sps_hashcode></sps-api-request>
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Content-Type:
+      - text/xml
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 16 Dec 2015 05:15:53 GMT
+      Server:
+      - Apache
+      Set-Cookie:
+      - JSESSIONID=BD52443ACFAD058B118318171243BBE3.fep214; Path=/api
+      Pragma:
+      - No-cache
+      Cache-Control:
+      - no-cache,no-store,max-age=0
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cteonnt-Length:
+      - '221'
+      Connection:
+      - close
+      Content-Type:
+      - text/xml;charset=Shift_JIS
+      Content-Language:
+      - ja
+      Content-Length:
+      - '172'
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        <?xml version='1.0' encoding='Shift_JIS' ?>
+          <sps-api-response id="ST01-00101-701">
+            <res_result>NG</res_result>
+            <res_err_code>70122999</res_err_code>
+            <res_date>20151216141557</res_date>
+          </sps-api-response>
+    http_version: 
+  recorded_at: Wed, 16 Dec 2015 05:15:57 GMT
+- request:
+    method: post
+    uri: https://30132002:8435dbd48f2249807ec216c3d5ecab714264cc4a@stbfep.sps-system.com/api/xmlapi.do
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="Shift_JIS"?><sps-api-request id="MG01-00101-701"><merchant_id>30132</merchant_id><service_id>002</service_id><encrypted_flg>1</encrypted_flg><request_date>20151216141557</request_date><sps_hashcode>8aa240b329e1e6506eb768213ac7ff190f5d7002</sps_hashcode></sps-api-request>
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Content-Type:
+      - text/xml
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 16 Dec 2015 05:15:56 GMT
+      Server:
+      - Apache
+      Set-Cookie:
+      - JSESSIONID=B102F0D4685B4247B95D7F8DC8B282E4.fep215; Path=/api
+      Pragma:
+      - No-cache
+      Cache-Control:
+      - no-cache,no-store,max-age=0
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cteonnt-Length:
+      - '201'
+      Connection:
+      - close
+      Content-Type:
+      - text/xml;charset=Shift_JIS
+      Content-Language:
+      - ja
+      Content-Length:
+      - '152'
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        <?xml version='1.0' encoding='Shift_JIS' ?>
+          <sps-api-response>
+            <res_result>NG</res_result>
+            <res_err_code>70103026</res_err_code>
+            <res_date>20151216141556</res_date>
+          </sps-api-response>
+    http_version: 
+  recorded_at: Wed, 16 Dec 2015 05:15:57 GMT
+recorded_with: VCR 3.0.0
