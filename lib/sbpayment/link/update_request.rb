@@ -20,7 +20,7 @@ module Sbpayment
       key :free1, type: :M
       key :free2, type: :M
       key :free3, type: :M
-      key :request_date, default: -> { Time.now.strftime('%Y%m%d%H%M%S') }
+      key :request_date, default: -> { TimeUtil.format_current_time }
       key :limit_second
       key :sps_hashcode
 

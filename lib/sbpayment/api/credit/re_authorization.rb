@@ -58,7 +58,7 @@ module Sbpayment
         key :pay_method_info, class: PayMethodInfo
         key :pay_option_manage, class: PayOptionManage
         key :encrypted_flg, default: '1'
-        key :request_date, default: -> { Time.now.strftime('%Y%m%d%H%M%S') }
+        key :request_date, default: -> { TimeUtil.format_current_time }
         key :limit_second
         key :sps_hashcode
       end

@@ -1,5 +1,6 @@
 require 'sbpayment/version'
 require 'sbpayment/errors'
+require 'sbpayment/time_util'
 require 'sbpayment/const'
 require 'sbpayment/configuration'
 require 'sbpayment/link'
