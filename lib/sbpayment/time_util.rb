@@ -1,8 +1,10 @@
 module Sbpayment
   module TimeUtil
+    STRFTIME_FORMAT = '%Y%m%d%H%M%S'.freeze
+
     class << self
       def format_current_time
-        in_jst { return ::Time.now.strftime('%Y%m%d%H%M%S') }
+        in_jst { return ::Time.now.strftime(STRFTIME_FORMAT) }
       end
 
       def in_jst
