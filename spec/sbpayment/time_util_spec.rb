@@ -8,9 +8,19 @@ describe Sbpayment::TimeUtil do
   end
 
   describe '.format_current_time' do
-    subject { described_class.format_current_time }
+    subject             { described_class.format_current_time }
+    let!(:running_time) { Time.local 2016, 5, 2 }
 
-    it { is_expected.to eq((Time.now + 9 * 60 * 60).strftime Sbpayment::TimeUtil::STRFTIME_FORMAT) } # TODO Consider to use `timecop` for stable results
+    around do |example|
+      Timecop.freeze running_time do
+        example.run
+      end
+    end
+
+    it do
+      jst = running_time + 9 * 60 * 60
+      is_expected.to eq(jst.strftime Sbpayment::TimeUtil::STRFTIME_FORMAT)
+    end
   end
 
   describe '.in_jst' do
