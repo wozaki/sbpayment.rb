@@ -9,7 +9,7 @@ module Sbpayment
         key :merchant_id, default: -> { Sbpayment.config.merchant_id }
         key :service_id,  default: -> { Sbpayment.config.default_service_id }
         key :tracking_id
-        key :request_date, default: -> { Time.now.strftime('%Y%m%d%H%M%S') }
+        key :request_date, default: -> { TimeUtil.format_current_time }
         key :limit_second
         key :sps_hashcode
       end

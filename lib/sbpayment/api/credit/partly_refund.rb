@@ -19,7 +19,7 @@ module Sbpayment
         key :tracking_id
         key :processing_datetime
         key :pay_option_manage, class: PayOptionManage
-        key :request_date, default: -> { Time.now.strftime('%Y%m%d%H%M%S') }
+        key :request_date, default: -> { TimeUtil.format_current_time }
         key :limit_second
         key :sps_hashcode
       end

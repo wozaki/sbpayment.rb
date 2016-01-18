@@ -6,6 +6,7 @@ require 'rspec'
 require 'webmock/rspec'
 require 'vcr'
 require 'pry'
+require 'timecop'
 
 $test_env = true
 

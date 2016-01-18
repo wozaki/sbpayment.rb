@@ -18,7 +18,7 @@ module Sbpayment
         key :free2
         key :free3
         key :order_rowno
-        key :request_date, default: -> { Time.now.strftime('%Y%m%d%H%M%S') }
+        key :request_date, default: -> { TimeUtil.format_current_time }
         key :limit_second
         key :sps_hashcode
       end

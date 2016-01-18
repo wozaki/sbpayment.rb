@@ -34,7 +34,7 @@ module Sbpayment
       key :free2, type: :M
       key :free3, type: :M
       key :free_csv, type: :M
-      key :request_date, default: -> { Time.now.strftime('%Y%m%d%H%M%S') }
+      key :request_date, default: -> { TimeUtil.format_current_time }
       key :limit_second
       key :sps_hashcode
 
