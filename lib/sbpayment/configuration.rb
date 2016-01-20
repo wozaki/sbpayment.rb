@@ -12,7 +12,7 @@ module Sbpayment
   end
   extend Configuration
 
-  class ConfigrationError < Sbpayment::Error; end
+  class ConfigurationError < Sbpayment::Error; end
 
   class Config
     include Singleton
@@ -31,8 +31,8 @@ module Sbpayment
     end
 
     def default_service_id
-      if allow_multiple_service_id
-        raise ConfigrationError, 'need to set service_id in multiple service_id mode'
+      if !allow_multiple_service_id && service_id.nil?
+        raise ConfigurationError, 'needs to set service_id unless multiple service_id mode'
       else
         service_id
       end
