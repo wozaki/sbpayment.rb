@@ -1,4 +1,5 @@
 require_relative '../parameter_definition'
+require_relative 'purchase_request/validators'
 
 module Sbpayment
   module Link
