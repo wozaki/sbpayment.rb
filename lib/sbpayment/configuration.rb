@@ -32,7 +32,7 @@ module Sbpayment
       allow_multiple_service_id
     ].freeze
 
-    attr_accessor *OPTION_KEYS
+    attr_accessor(*OPTION_KEYS)
 
     def initialize
       @sandbox = false
