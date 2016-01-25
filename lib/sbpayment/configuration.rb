@@ -17,17 +17,30 @@ module Sbpayment
   class Config
     include Singleton
 
-    attr_accessor :sandbox
-    attr_accessor :basic_auth_user, :basic_auth_password
-    attr_accessor :merchant_id, :service_id
-    attr_accessor :cipher_code, :cipher_iv
-    attr_accessor :hashkey
-    attr_accessor :proxy_uri, :proxy_user, :proxy_password
-    attr_accessor :allow_multiple_service_id
+    OPTION_KEYS = %i[
+      sandbox
+      basic_auth_user
+      basic_auth_password
+      merchant_id
+      service_id
+      cipher_code
+      cipher_iv
+      hashkey
+      proxy_uri
+      proxy_user
+      proxy_password
+      allow_multiple_service_id
+    ].freeze
+
+    attr_accessor(*OPTION_KEYS)
 
     def initialize
       @sandbox = false
       @allow_multiple_service_id = false
+    end
+
+    def []=(name, value)
+      __send__ "#{name}=", value
     end
 
     def default_service_id
