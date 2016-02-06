@@ -4,7 +4,7 @@ require_relative '../../response'
 module Sbpayment
   module API
     module Softbank
-      class RefundRequest < Request
+      class CancelRefundRequest < Request
         tag 'sps-api-request', id: 'ST02-00303-405'
         key :merchant_id, default: -> { Sbpayment.config.merchant_id }
         key :service_id,  default: -> { Sbpayment.config.default_service_id }
@@ -15,7 +15,7 @@ module Sbpayment
         key :sps_hashcode
       end
 
-      class RefundResponse < Response
+      class CancelRefundResponse < Response
       end
     end
   end
