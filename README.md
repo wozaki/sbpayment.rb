@@ -84,7 +84,7 @@ Action Name                                              | sps-api-request id | 
 ---                                                      | ---                | ---                                              |
 ソフトバンクまとめて支払い B 継続課金(定期) 要求処理     | `ST01-00104-405`   | `Sbpayment::API::Softbank::AuthorizationRequest` |
 ソフトバンクまとめて支払い B 継続課金(定期) 確定処理     | `ST02-00201-405`   | `Sbpayment::API::Softbank::CommitRequest`        |
-ソフトバンクまとめて支払い(B)継続課金(定期) 取消返金要求 | `ST02-00303-405`   | `Sbpayment::API::Softbank::RefundRequest`        |
+ソフトバンクまとめて支払い(B)継続課金(定期) 取消返金要求 | `ST02-00303-405`   | `Sbpayment::API::Softbank::CancelRefundRequest`  |
 
 ## Development
 
