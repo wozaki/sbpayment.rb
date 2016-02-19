@@ -25,7 +25,7 @@ module Sbpayment
 
         tag 'sps-api-request', id: 'MG02-00101-101'
         key :merchant_id, default: -> { Sbpayment.config.merchant_id }
-        key :service_id,  default: -> { Sbpayment.config.default_service_id }
+        key :service_id,  default: -> { Sbpayment.config.service_id }
         key :cust_code
         key :sps_cust_info_return_flg, default: '1'
         key :pay_method_info, class: PayMethodInfo
