@@ -36,7 +36,6 @@ hashkey                   | use hashkey given by sbpayment                      
 proxy_uri                 | set forward proxy uri if you need                                                                                                 | ""      | false    | String  |
 proxy_user                | set forward proxy's user if you need                                                                                              | ""      | false    | String  |
 proxy_password            | set forward proxy's password if you need                                                                                          | ""      | false    | String  |
-allow_multiple_service_id | if your application uses multiple service_id from 1 application, set true, then you need to pass service_id every time explicitly | false   | false    | Boolean |
 
 ### Supported Actions
 
