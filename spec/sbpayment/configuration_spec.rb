@@ -7,49 +7,11 @@ describe Sbpayment::Configuration do
     end
   end
 
-  describe '#default_service_id' do
-    before do
-      Sbpayment.config.service_id = nil # For initialize
-    end
-
-    context 'when allow_multiple_service_id is false (default)' do
-      before do
-        Sbpayment.config.allow_multiple_service_id = false
-      end
-
-      context 'when service_id is not given' do
-        it 'raises a ConfigurationError' do
-          expect{ Sbpayment.config.default_service_id }.to raise_error(Sbpayment::ConfigurationError)
-        end
-      end
-
-      context 'when service_id is given' do
-        before do
-          Sbpayment.config.service_id = 'foo'
-        end
-
-        it 'returns service_id' do
-          expect(Sbpayment.config.default_service_id).to eq 'foo'
-        end
-      end
-    end
-
-    context 'when allow_multiple_service_id is true' do
-      before do
-        Sbpayment.config.allow_multiple_service_id = true
-      end
-
-      it 'returns nil' do
-        expect(Sbpayment.config.default_service_id).to be_nil
-      end
-    end
-  end
-
   describe 'configure' do
     let(:merchant_id) { SecureRandom.hex }
     let(:service_id)  { 'foo' }
 
-    before(:example) do
+    before do
       Sbpayment.configure do |x|
         x.merchant_id = merchant_id
         x['service_id'] = service_id
