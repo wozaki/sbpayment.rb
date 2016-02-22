@@ -8,7 +8,7 @@ module Sbpayment
 
       key :pay_method
       key :merchant_id, default: -> { Sbpayment.config.merchant_id }
-      key :service_id,  default: -> { Sbpayment.config.default_service_id }
+      key :service_id,  default: -> { Sbpayment.config.service_id }
       key :cust_code
       key :sps_cust_no
       key :sps_payment_no

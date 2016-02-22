@@ -7,7 +7,7 @@ module Sbpayment
       class ReadPaymentResultRequest < Request
         tag 'sps-api-request', id: 'MG01-00101-701'
         key :merchant_id, default: -> { Sbpayment.config.merchant_id }
-        key :service_id,  default: -> { Sbpayment.config.default_service_id }
+        key :service_id,  default: -> { Sbpayment.config.service_id }
         key :sps_transaction_id
         key :tracking_id
         key :encrypted_flg, default: '1'
