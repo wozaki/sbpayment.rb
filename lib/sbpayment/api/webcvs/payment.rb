@@ -39,7 +39,7 @@ module Sbpayment
 
         tag 'sps-api-request', id: 'ST01-00101-701'
         key :merchant_id, default: -> { Sbpayment.config.merchant_id }
-        key :service_id,  default: -> { Sbpayment.config.default_service_id }
+        key :service_id,  default: -> { Sbpayment.config.service_id }
         key :cust_code
         key :order_id
         key :item_id
