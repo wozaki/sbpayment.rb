@@ -7,9 +7,9 @@ module Sbpayment
       class CancelRefundRequest < Request
         class PayOptionManage
           include ParameterDefinition
-
           tag 'pay_option_manage'
           key :amount
+          key :cancel_target_month
         end
 
         tag 'sps-api-request', id: 'ST02-00303-402'
