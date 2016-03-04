@@ -76,6 +76,18 @@ describe Sbpayment::APIError do
         end
       end
     end
+
+    context 'with a known pattern "40203200"' do
+      subject { Sbpayment::APIError.parse '40203200' }
+
+      it 'returns a API40203Error' do
+        expect(subject).to be_an_instance_of(Sbpayment::API40203Error)
+      end
+
+      it 'knowns the type detail' do
+        expect(subject.item.summary).to eq('取消対象年月')
+      end
+    end
   end
 
   describe '#payment_method' do
