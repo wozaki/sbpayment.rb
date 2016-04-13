@@ -46,7 +46,7 @@ module Sbpayment
         key :cust_code
         key :order_id
         key :item_id
-        key :item_name
+        key :item_name, type: :M
         key :tax
         key :amount
         key :free1
