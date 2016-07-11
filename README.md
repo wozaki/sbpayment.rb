@@ -2,6 +2,8 @@
 
 A client library for [sbpayment (Softbank Payment Service)](http://www.sbpayment.jp) written in Ruby.
 
+This library is not an official library, please use at your own risk.
+
 ## Installation
 
 ```ruby
