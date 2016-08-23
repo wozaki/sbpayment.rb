@@ -194,4 +194,78 @@ describe 'Credit API behavior' do
       expect(res.body[:'res_pay_method_info.payment_status']).to eq '3'
     end
   end
+
+  describe "authorization, commit and sales" do
+    around do |e|
+      VCR.use_cassette 'authorization-commit-and-sales' do
+        e.run
+      end
+    end
+
+    it 'works' do
+      # authorization part
+
+      req = Sbpayment::API::Credit::AuthorizationRequest.new
+      req.encrypted_flg = '0'
+      req.cust_code = 'Quipper Customer ID'
+      req.order_id  = SecureRandom.hex
+      req.item_id   = 'item_1'
+      req.item_name = 'item'
+      req.amount    = 1250
+
+      detail = Sbpayment::API::Credit::AuthorizationRequest::Detail.new
+      detail.dtl_rowno      = 1
+      detail.dtl_item_id    = 'item_1'
+      detail.dtl_item_name  = 'item 1'
+      detail.dtl_item_count = 2
+      detail.dtl_amount     = 500
+      req.dtls << detail
+
+      detail = Sbpayment::API::Credit::AuthorizationRequest::Detail.new
+      detail.dtl_rowno      = 2
+      detail.dtl_item_id    = 'item_2'
+      detail.dtl_item_name  = 'item 2'
+      detail.dtl_item_count = 1
+      detail.dtl_amount     = 250
+      req.dtls << detail
+
+      req.pay_method_info.cc_number = '4242424242424242'
+      req.pay_method_info.cc_expiration = '202001'
+      req.pay_method_info.security_code = '000'
+      req.pay_method_info.dealings_type = 10
+      req.pay_option_manage.cust_manage_flg = '1'
+
+      auth_res = req.perform
+
+      expect(auth_res.status).to eq 200
+      expect(auth_res.headers['content-type']).to include 'text/xml'
+      expect(auth_res.body[:res_result]).to eq 'OK'
+      expect(auth_res.error).to be_nil
+
+      # commit part
+
+      req = Sbpayment::API::Credit::CommitRequest.new
+      req.sps_transaction_id  = auth_res.body[:res_sps_transaction_id]
+      req.tracking_id         = auth_res.body[:res_tracking_id]
+      req.processing_datetime = auth_res.body[:res_process_date]
+
+      commit_res = req.perform
+      expect(commit_res.status).to eq 200
+      expect(commit_res.headers['content-type']).to include 'text/xml'
+      expect(commit_res.body[:res_result]).to eq 'OK'
+
+      # sales post
+
+      req = Sbpayment::API::Credit::SalesRequest.new
+      req.sps_transaction_id  = auth_res.body[:res_sps_transaction_id]
+      req.tracking_id         = auth_res.body[:res_tracking_id]
+      req.processing_datetime = auth_res.body[:res_process_date]
+
+      sales_res = req.perform
+      expect(sales_res.status).to eq 200
+      expect(sales_res.headers['content-type']).to include 'text/xml'
+      expect(sales_res.body[:res_result]).to eq 'OK'
+    end
+  end
+
 end
