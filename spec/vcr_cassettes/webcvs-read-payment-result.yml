@@ -1,0 +1,130 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://stbfep.sps-system.com/api/xmlapi.do
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="Shift_JIS"?><sps-api-request id="ST01-00101-701"><merchant_id>71210</merchant_id><service_id>007</service_id><cust_code>Quipper
+        Customer ID</cust_code><order_id>fe0b5c11d445ebb4febe7f2db0ee0921</order_id><item_id>item_1</item_id><item_name>aXRlbQ==</item_name><amount>1250</amount><order_rowno>1</order_rowno><dtls><dtl><dtl_rowno>1</dtl_rowno><dtl_item_id>item_1</dtl_item_id><dtl_item_name>aXRlbSAx</dtl_item_name><dtl_item_count>2</dtl_item_count><dtl_amount>500</dtl_amount></dtl><dtl><dtl_rowno>2</dtl_rowno><dtl_item_id>item_2</dtl_item_id><dtl_item_name>aXRlbSAy</dtl_item_name><dtl_item_count>1</dtl_item_count><dtl_amount>250</dtl_amount></dtl></dtls><pay_method_info><issue_type>0</issue_type><last_name>gsSCt4LG</last_name><first_name>gUA=</first_name><last_name_kana>g2WDWINn</last_name_kana><first_zip>000</first_zip><second_zip>0000</second_zip><add1>gUA=</add1><add2>gUA=</add2><tel>0312345678</tel><mail>cvs@dummy.com</mail><seiyakudate>20161028</seiyakudate><webcvstype>002</webcvstype><bill_date>20161028</bill_date></pay_method_info><encrypted_flg>0</encrypted_flg><request_date>20161028192249</request_date><sps_hashcode>3994948d83bb6d66495b783f17d6e1aa93cb0864</sps_hashcode></sps-api-request>
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Content-Type:
+      - text/xml
+      Authorization:
+      - Basic NzEyMTAwMDc6MTE3NWEzYzc2OTBjODdlZDE3NjY4NDJkYmViNDdmM2ZlNTdhOTdmNw==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 28 Oct 2016 10:22:49 GMT
+      Server:
+      - Apache
+      Set-Cookie:
+      - JSESSIONID=348171DDCF94B6CDFE25F3D3BF5E5580.f115; Path=/api
+      Pragma:
+      - No-cache
+      Cache-Control:
+      - no-cache,no-store,max-age=0
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Content-Length:
+      - '712'
+      Connection:
+      - close
+      Content-Type:
+      - text/xml;charset=Shift_JIS
+      Content-Language:
+      - ja
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version='1.0' encoding='Shift_JIS' ?>
+          <sps-api-response id="ST01-00101-701">
+            <res_result>OK</res_result>
+            <res_sps_transaction_id>B71210007ST010010170100188245648</res_sps_transaction_id>
+            <res_tracking_id>83897187434765</res_tracking_id>
+            <res_pay_method_info>
+              <invoice_no>83897187434765</invoice_no>
+              <bill_date>20161028</bill_date>
+              <cvs_pay_data1>30654892-426543614</cvs_pay_data1>
+              <cvs_pay_data2>https://cvsshiharai.densan-s.co.jp/Haraikomi.aspx?order1=30654892&amp;order2=426543614</cvs_pay_data2>
+            </res_pay_method_info>
+            <res_process_date>20161028192250</res_process_date>
+            <res_err_code/>
+            <res_date>20161028192250</res_date>
+          </sps-api-response>
+    http_version: 
+  recorded_at: Fri, 28 Oct 2016 10:22:50 GMT
+- request:
+    method: post
+    uri: https://stbfep.sps-system.com/api/xmlapi.do
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="Shift_JIS"?><sps-api-request id="MG01-00101-701"><merchant_id>71210</merchant_id><service_id>007</service_id><sps_transaction_id>B71210007ST010010170100188245648</sps_transaction_id><tracking_id>83897187434765</tracking_id><encrypted_flg>0</encrypted_flg><request_date>20161028192250</request_date><sps_hashcode>7a917d423de1fc1773286be7d09560743ec5f420</sps_hashcode></sps-api-request>
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Content-Type:
+      - text/xml
+      Authorization:
+      - Basic NzEyMTAwMDc6MTE3NWEzYzc2OTBjODdlZDE3NjY4NDJkYmViNDdmM2ZlNTdhOTdmNw==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 28 Oct 2016 10:22:50 GMT
+      Server:
+      - Apache
+      Set-Cookie:
+      - JSESSIONID=F6F418F490FA7E1E4E7EB8E70699359B.f115; Path=/api
+      Pragma:
+      - No-cache
+      Cache-Control:
+      - no-cache,no-store,max-age=0
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Content-Length:
+      - '765'
+      Connection:
+      - close
+      Content-Type:
+      - text/xml;charset=Shift_JIS
+      Content-Language:
+      - ja
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version='1.0' encoding='Shift_JIS' ?>
+          <sps-api-response id="MG01-00101-701">
+            <res_result>OK</res_result>
+            <res_sps_transaction_id>B71210007MG010010170100188245657</res_sps_transaction_id>
+            <res_status>0</res_status>
+            <res_pay_method_info>
+              <webcvstype>002</webcvstype>
+              <invoice_no>83897187434765</invoice_no>
+              <bill_date>20161028</bill_date>
+              <cvs_pay_data1>30654892-426543614</cvs_pay_data1>
+              <cvs_pay_data2>https://cvsshiharai.densan-s.co.jp/Haraikomi.aspx?order1=30654892&amp;order2=426543614</cvs_pay_data2>
+              <payment_status>1</payment_status>
+            </res_pay_method_info>
+            <res_process_date>20161028192250</res_process_date>
+            <res_err_code/>
+            <res_date>20161028192251</res_date>
+          </sps-api-response>
+    http_version: 
+  recorded_at: Fri, 28 Oct 2016 10:22:50 GMT
+recorded_with: VCR 3.0.3

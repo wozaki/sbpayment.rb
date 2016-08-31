@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='Shift_JIS' ?>
+<sps-api-request id="NT01-00103-701">
+  <merchant_id>99999</merchant_id>
+  <service_id>999</service_id>
+  <sps_transaction_id>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</sps_transaction_id>
+  <tracking_id>12345678901234</tracking_id>
+  <rec_datetime>20091010</rec_datetime>
+  <pay_method_info>
+    <rec_type>1</rec_type>
+    <rec_amount>10800</rec_amount>
+    <rec_amount_total>10800</rec_amount_total>
+    <res_mail>payeasy@ps.softbank.co.jp</res_mail>
+    <rec_extra>備考</rec_extra>
+  </pay_method_info>
+  <request_date>20091010125959</request_date>
+  <sps_hashcode>eead2e422cc837125950b2b53d9e42ed0ab598cc</sps_hashcode>
+</sps-api-request>
