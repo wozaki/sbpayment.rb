@@ -38,6 +38,8 @@ hashkey                   | use hashkey given by sbpayment                      
 proxy_uri                 | set forward proxy uri if you need                                                                                                 | ""      | false    | String  |
 proxy_user                | set forward proxy's user if you need                                                                                              | ""      | false    | String  |
 proxy_password            | set forward proxy's password if you need                                                                                          | ""      | false    | String  |
+retry_max_counts          | set max retry counts if you need                                                                                                  | 3       | false    | Integer |
+
 
 ### Supported Actions
 

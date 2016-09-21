@@ -13,6 +13,8 @@ module Sbpayment
   extend Configuration
 
   class Config
+    RETRY_TIMES = 3
+
     include Singleton
 
     OPTION_KEYS = %i[
@@ -27,12 +29,14 @@ module Sbpayment
       proxy_uri
       proxy_user
       proxy_password
+      retry_max_counts
     ].freeze
 
     attr_accessor(*OPTION_KEYS)
 
     def initialize
       @sandbox = false
+      @retry_max_counts = RETRY_TIMES
     end
 
     def []=(name, value)
