@@ -30,6 +30,8 @@ module Sbpayment
       proxy_user
       proxy_password
       retry_max_counts
+      open_timeout
+      timeout
     ].freeze
 
     attr_accessor(*OPTION_KEYS)
