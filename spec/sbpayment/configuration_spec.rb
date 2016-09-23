@@ -50,4 +50,30 @@ describe Sbpayment::Configuration do
       end
     end
   end
+
+  describe 'timeout options' do
+    context 'when not changing timeout options' do
+      it 'returns default value' do
+        expect(Sbpayment.config.open_timeout).to be_nil
+        expect(Sbpayment.config.timeout).to be_nil
+      end
+    end
+
+    context 'when changing timeout options' do
+      let(:open_timeout) { 1 }
+      let(:timeout)      { 2 }
+
+      before do
+        Sbpayment.configure do |x|
+          x.open_timeout = open_timeout
+          x.timeout = timeout
+        end
+      end
+
+      it 'returns setup value' do
+        expect(Sbpayment.config.open_timeout).to eq open_timeout
+        expect(Sbpayment.config.timeout).to eq timeout
+      end
+    end
+  end
 end

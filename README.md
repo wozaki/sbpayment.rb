@@ -39,6 +39,8 @@ proxy_uri                 | set forward proxy uri if you need                   
 proxy_user                | set forward proxy's user if you need                                                                                              | ""      | false    | String  |
 proxy_password            | set forward proxy's password if you need                                                                                          | ""      | false    | String  |
 retry_max_counts          | set max retry counts if you need                                                                                                  | 3       | false    | Integer |
+open_timeout              | set number of seconds to wait for the connection to open                                                                          | nil     | false    | Integer |
+timeout                   | set number of seconds to wait for reading                                                                                         | nil     | false    | Integer |
 
 
 ### Supported Actions

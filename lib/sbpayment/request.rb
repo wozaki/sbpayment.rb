@@ -17,7 +17,14 @@ module Sbpayment
 
       url = config.sandbox ? Sbpayment::SANDBOX_URL : Sbpayment::PRODUCTION_URL
 
-      connection = Faraday.new(url: url) do |builder|
+      faraday_options = {
+        url: url,
+        request: {
+          open_timeout: config.open_timeout,
+          timeout: config.timeout
+        }
+      }
+      connection = Faraday.new(faraday_options) do |builder|
         builder.request :retry, max: config.retry_max_counts, interval: RETRY_INTERVAL, exceptions: [Errno::ETIMEDOUT, Timeout::Error, Faraday::Error::TimeoutError]
         builder.request :basic_auth, config.basic_auth_user, config.basic_auth_password
         builder.adapter Faraday.default_adapter
