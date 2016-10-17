@@ -56,7 +56,7 @@ module Sbpayment
         key :sps_hashcode
       end
 
-      class AuthorizationResponse < Response
+      class AuthorizationTokenResponse < Response
         DECRYPT_PARAMETERS = %i(res_pay_method_info.cc_company_code
                                 res_pay_method_info.cardbrand_code
                                 res_pay_method_info.recognized_no).freeze

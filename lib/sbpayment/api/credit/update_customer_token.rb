@@ -4,7 +4,7 @@ require_relative '../../response'
 module Sbpayment
   module API
     module Credit
-      class UpdateCustomerRequestToken < Request
+      class UpdateCustomerTokenRequest < Request
         class PayMethodInfo
           include ParameterDefinition
 
@@ -22,7 +22,7 @@ module Sbpayment
           key :cardbrand_return_flg, default: '1'
         end
 
-        tag 'sps-api-request', id: 'MG02-00102-101'
+        tag 'sps-api-request', id: 'MG02-00132-101'
         key :merchant_id, default: -> { Sbpayment.config.merchant_id }
         key :service_id,  default: -> { Sbpayment.config.service_id }
         key :cust_code
@@ -35,7 +35,7 @@ module Sbpayment
         key :sps_hashcode
       end
 
-      class UpdateCustomerResponse < Response
+      class UpdateCustomerTokenResponse < Response
         DECRYPT_PARAMETERS = %i(res_pay_method_info.cardbrand_code).freeze
       end
     end
