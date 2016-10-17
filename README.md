@@ -55,20 +55,23 @@ Currently client side encoding is supported only for UTF-8. (UTF-8 to Shift-JIS)
 
 ##### Credit
 
-Action Name         | sps-api-request id | Request class                                         |
----                 | ---                | ---                                                   |
-与信要求            | `ST01-00111-101`   | `Sbpayment::API::Credit::AuthorizationRequest`        |
-再与信要求          | `ST01-00113-101`   | `Sbpayment::API::Credit::ReAuthorizationRequest`      |
-コミット (確定処理) | `ST02-00101-101`   | `Sbpayment::API::Credit::CommitRequest`               |
-売り上げ連携        | `ST02-00201-101`   | `Sbpayment::API::Credit::SalesRequest`                |
-決済結果参照        | `MG01-00101-101`   | `Sbpayment::API::Credit::InquireAuthorizationRequest` |
-取消要求            | `ST02-00305-101`   | `Sbpayment::API::Credit::CancelAuthorizationRequest`  |
-返金要求            | `ST02-00303-101`   | `Sbpayment::API::Credit::RefundRequest`               |
-部分返金要求        | `ST02-00307-101`   | `Sbpayment::API::Credit::PartlyRefundRequest`         |
-顧客情報登録        | `MG02-00101-101`   | `Sbpayment::API::Credit::CreateCustomerRequest`       |
-顧客情報更新        | `MG02-00102-101`   | `Sbpayment::API::Credit::UpdateCustomerRequest`       |
-顧客情報削除        | `MG02-00103-101`   | `Sbpayment::API::Credit::DeleteCustomerRequest`       |
-顧客情報参照        | `MG02-00104-101`   | `Sbpayment::API::Credit::ReadCustomerRequest`         |
+Action Name                   | sps-api-request id | Request class                                         |
+---                           | ---                | ---                                                   |
+与信要求                      | `ST01-00111-101`   | `Sbpayment::API::Credit::AuthorizationRequest`        |
+与信要求(トークン)            | `ST01-00131-101`   | `Sbpayment::API::Credit::AuthorizationRequestToken`   |
+再与信要求                    | `ST01-00113-101`   | `Sbpayment::API::Credit::ReAuthorizationRequest`      |
+コミット (確定処理)           | `ST02-00101-101`   | `Sbpayment::API::Credit::CommitRequest`               |
+売り上げ連携                  | `ST02-00201-101`   | `Sbpayment::API::Credit::SalesRequest`                |
+決済結果参照                  | `MG01-00101-101`   | `Sbpayment::API::Credit::InquireAuthorizationRequest` |
+取消要求                      | `ST02-00305-101`   | `Sbpayment::API::Credit::CancelAuthorizationRequest`  |
+返金要求                      | `ST02-00303-101`   | `Sbpayment::API::Credit::RefundRequest`               |
+部分返金要求                  | `ST02-00307-101`   | `Sbpayment::API::Credit::PartlyRefundRequest`         |
+顧客情報登録                  | `MG02-00101-101`   | `Sbpayment::API::Credit::CreateCustomerRequest`       |
+顧客情報更新                  | `MG02-00102-101`   | `Sbpayment::API::Credit::UpdateCustomerRequest`       |
+顧客情報登録(トークン)        | `MG02-00131-101`   | `Sbpayment::API::Credit::CreateCustomerRequestToken`  |
+顧客情報更新(トークン)        | `MG02-00132-101`   | `Sbpayment::API::Credit::UpdateCustomerRequestToken`  |
+顧客情報削除                  | `MG02-00103-101`   | `Sbpayment::API::Credit::DeleteCustomerRequest`       |
+顧客情報参照                  | `MG02-00104-101`   | `Sbpayment::API::Credit::ReadCustomerRequest`         |
 
 ##### Carrier
 
