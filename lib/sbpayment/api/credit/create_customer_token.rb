@@ -35,7 +35,7 @@ module Sbpayment
         key :sps_hashcode
       end
 
-      class CreateCustomerResponse < Response
+      class CreateCustomerTokenResponse < Response
         DECRYPT_PARAMETERS = %i(res_pay_method_info.cardbrand_code).freeze
       end
     end
