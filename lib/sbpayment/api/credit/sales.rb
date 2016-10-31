@@ -18,6 +18,7 @@ module Sbpayment
         key :sps_transaction_id
         key :tracking_id
         key :processing_datetime
+        key :pay_option_manage, class: PayOptionManage
         key :request_date, default: -> { TimeUtil.format_current_time }
         key :limit_second
         key :sps_hashcode
