@@ -17,7 +17,7 @@ module Sbpayment
         key :service_id,  default: -> { Sbpayment.config.service_id }
         key :sps_transaction_id
         key :tracking_id
-        key :processing_datetime
+        key :processing_datetime, default: -> { TimeUtil.format_current_time }
         key :pay_option_manage, class: PayOptionManage
         key :request_date, default: -> { TimeUtil.format_current_time }
         key :limit_second
