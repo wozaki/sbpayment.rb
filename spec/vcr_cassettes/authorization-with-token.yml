@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://stbfep.sps-system.com/api/xmlapi.do
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="Shift_JIS"?><sps-api-request id="ST01-00131-101"><merchant_id>30132</merchant_id><service_id>002</service_id><cust_code>Quipper
+        Customer ID</cust_code><order_id>6acaece0977bcf373e26b07dd7cd6adc</order_id><item_id>item_1</item_id><item_name>aXRlbQ==</item_name><amount>1250</amount><sps_cust_info_return_flg>1</sps_cust_info_return_flg><dtls><dtl><dtl_rowno>1</dtl_rowno><dtl_item_id>item_1</dtl_item_id><dtl_item_name>aXRlbSAx</dtl_item_name><dtl_item_count>2</dtl_item_count><dtl_amount>500</dtl_amount></dtl><dtl><dtl_rowno>2</dtl_rowno><dtl_item_id>item_2</dtl_item_id><dtl_item_name>aXRlbSAy</dtl_item_name><dtl_item_count>1</dtl_item_count><dtl_amount>250</dtl_amount></dtl></dtls><pay_method_info><dealings_type>Uva/hiPMwBQ=</dealings_type></pay_method_info><pay_option_manage><token>EC3E61ADDB1EED89373D069C9E5400D6F1F36F4EB49F15EB1704259697AB31B1E61ADFA569E6A54BF232CD3D64CDB4308B3BB504526EF0F9D1A0753B8EE31827C5A657636716364986B1B5C4EFE7D968443B59434B2ED24FAEC33E94C3C62392458E4C8AF9AA6A412506F3F6A30C2758662428A546F237D779D0A8A5</token><token_key>3059301306072A8648CE3D020106082A8648CE3D0301070342000452C6F72AC93959DC64B4FC874F0B10DD1EE1873D53EBF0C15B5A283248483210456875A6ADEFA2A6331DF2AA8EED15FF33F73EE9D21511758151A2D7328725F4</token_key><cust_manage_flg>1</cust_manage_flg><cardbrand_return_flg>1</cardbrand_return_flg></pay_option_manage><encrypted_flg>1</encrypted_flg><request_date>20161017182254</request_date><sps_hashcode>cb6f4beafe0f6e71c66ddc9e5e173b7101e05d32</sps_hashcode></sps-api-request>
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Content-Type:
+      - text/xml
+      Authorization:
+      - Basic MzAxMzIwMDI6ODQzNWRiZDQ4ZjIyNDk4MDdlYzIxNmMzZDVlY2FiNzE0MjY0Y2M0YQ==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 17 Oct 2016 09:22:57 GMT
+      Server:
+      - Apache
+      Set-Cookie:
+      - JSESSIONID=616DA902FBD6DDBFAC14332EC84FF0F3.f114; Path=/api
+      Pragma:
+      - No-cache
+      Cache-Control:
+      - no-cache,no-store,max-age=0
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Content-Length:
+      - '755'
+      Connection:
+      - close
+      Content-Type:
+      - text/xml;charset=Shift_JIS
+      Content-Language:
+      - ja
+    body:
+      encoding: UTF-8
+      string: "<?xml version='1.0' encoding='Shift_JIS' ?>\n  <sps-api-response id=\"ST01-00131-101\">\n
+        \   <res_result>OK</res_result>\n    <res_sps_transaction_id>B30132002ST010013110100178723231</res_sps_transaction_id>\n
+        \   <res_tracking_id>00000607165957</res_tracking_id>\n    <res_pay_method_info>\n
+        \     <cc_company_code>GfF634VOvjs=</cc_company_code>\n      <cardbrand_code>CgyPIElhbz8=</cardbrand_code>\n
+        \     <recognized_no>jxcXNzl3Km0=</recognized_no>\n      \n    </res_pay_method_info>\n
+        \   <res_sps_info>\n      <res_sps_cust_no>323941993632</res_sps_cust_no>\n
+        \     <res_sps_payment_no>001</res_sps_payment_no>\n    </res_sps_info>\n
+        \   <res_process_date>20161017182257</res_process_date>\n    <res_err_code/>\n
+        \   <res_date>20161017182258</res_date>\n  </sps-api-response>\n"
+    http_version: 
+  recorded_at: Mon, 17 Oct 2016 09:23:00 GMT
+recorded_with: VCR 3.0.3
