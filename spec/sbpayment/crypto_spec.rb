@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Sbpayment::Crypto do
   let(:key)  { SecureRandom.hex 12 }
-  let(:iv)   { SecureRandom.hex  8 }
+  let(:iv)   { SecureRandom.hex  4 }
 
   context 'when cipher_code and cipher_iv are not defined' do
     let(:data) { 'abcd' }

@@ -30,8 +30,8 @@ describe Sbpayment::ParameterDefinition do
 
   before do
     Sbpayment.configure do |x|
-      x.cipher_code = SecureRandom.hex
-      x.cipher_iv   = SecureRandom.hex
+      x.cipher_code = SecureRandom.hex(12)
+      x.cipher_iv   = SecureRandom.hex(4)
       x.hashkey     = SecureRandom.hex
     end
 
