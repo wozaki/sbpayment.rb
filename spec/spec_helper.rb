@@ -1,6 +1,7 @@
 $LOAD_PATH.unshift(__dir__)
 $LOAD_PATH.unshift(File.join(__dir__, '..', 'lib'))
 
+require 'securerandom'
 require 'sbpayment'
 require 'rspec'
 require 'webmock/rspec'
