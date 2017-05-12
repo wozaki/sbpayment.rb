@@ -23,7 +23,6 @@ module Sbpayment
       key :free1, type: :M
       key :free2, type: :M
       key :free3, type: :M
-      key :free_csv, type: :M
       key :request_date, default: -> { TimeUtil.format_current_time }
       key :limit_second
       key :sps_hashcode
