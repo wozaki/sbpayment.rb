@@ -61,6 +61,10 @@ module Sbpayment
       PATTERN = /\A[0-9a-zA-Z]{2}\z/
 
       define_children_from TYPE_COMMON_DEFINITIONS
+
+      def retryable?
+        !!/\A[89]/.match(code) # Can not use `match?` untill drop to less than ruby 2.4.0
+      end
     end
 
     class Item < Field
