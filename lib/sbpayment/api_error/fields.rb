@@ -63,7 +63,7 @@ module Sbpayment
       define_children_from TYPE_COMMON_DEFINITIONS
 
       def retryable?
-        !!/\A[89]/.match(code) # Can not use `match?` untill drop to less than ruby 2.4.0
+        !!/\A[89]/.match(code) # Can not use `match?` until drop to less than ruby 2.4.0
       end
     end
 
