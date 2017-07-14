@@ -36,6 +36,12 @@ describe Sbpayment::APIError do
         it 'knowns the type detail' do
           expect(subject.type.summary).to eq('桁数エラー')
         end
+
+        describe '#retryable?' do
+          it 'returns boolean as the type' do
+            expect(subject.retryable?).to eq(subject.type.retryable?)
+          end
+        end
       end
 
       context 'with known payment method' do
@@ -214,6 +220,28 @@ describe Sbpayment::APIError::Type do
 
     it 'raises an ArgumentError when given an invalid code' do
       expect { Sbpayment::APIError::Type.fetch '405' }.to raise_error(ArgumentError)
+    end
+  end
+
+  describe '#retryable?' do
+    subject { type.retryable? }
+
+    context 'on not a 8x/9x' do
+      let!(:type) { Sbpayment::APIError::Type.fetch('26') }
+
+      it { is_expected.to eq(false) }
+    end
+
+    context 'on a 8x' do
+      let!(:type) { Sbpayment::APIError::Type.fetch('86') }
+
+      it { is_expected.to eq(true) }
+    end
+
+    context 'on a 9x' do
+      let!(:type) { Sbpayment::APIError::Type.fetch('96') }
+
+      it { is_expected.to eq(true) }
     end
   end
 end
