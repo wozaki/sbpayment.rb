@@ -278,6 +278,7 @@ describe 'Credit API behavior' do
       end
     end
 
+    # vcr_cassette is manually created to pass test.
     describe 'with token' do
       before do
         Sbpayment.configure do |x|
