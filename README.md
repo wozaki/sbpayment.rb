@@ -95,6 +95,16 @@ Action Name                                              | sps-api-request id | 
 ソフトバンクまとめて支払い B 継続課金(定期) 確定処理     | `ST02-00201-405`   | `Sbpayment::API::Softbank::CommitRequest`        |
 ソフトバンクまとめて支払い(B)継続課金(定期) 取消返金要求 | `ST02-00303-405`   | `Sbpayment::API::Softbank::CancelRefundRequest`  |
 
+## Tips
+
+### Check error codes for debugging
+
+```
+./bin/console
+2.3.3 (main):0 > Sbpayment::APIError.parse("99990999")
+=> #<Sbpayment::API99990Error: 99990999>: method: 999(共通), type: 90(API システムエラー), item: 999(該当項目なし)
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.
