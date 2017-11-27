@@ -25,7 +25,7 @@ module Sbpayment
         }
       }
       connection = Faraday.new(faraday_options) do |builder|
-        builder.request :retry, max: config.retry_max_counts, interval: RETRY_INTERVAL, exceptions: [Errno::ETIMEDOUT, Timeout::Error, Faraday::Error::TimeoutError]
+        builder.request :retry, max: config.retry_max_counts, interval: RETRY_INTERVAL, exceptions: [Errno::ETIMEDOUT, Timeout::Error, Faraday::Error::TimeoutError, Faraday::Error::ConnectionFailed]
         builder.request :basic_auth, config.basic_auth_user, config.basic_auth_password
         builder.adapter Faraday.default_adapter
 
