@@ -8,8 +8,16 @@ require 'webmock/rspec'
 require 'vcr'
 require 'pry'
 require 'timecop'
+require 'selenium-webdriver'
+
+require_relative 'support/get_tokens_helper'
+
+RSpec.configure do |c|
+  c.include GetTokensHelper
+end
 
 VCR.configure do |config|
+  config.ignore_hosts 'jsbin.com' # Ignore jsbin.com to generate token
   config.cassette_library_dir = 'spec/vcr_cassettes'
   config.hook_into :webmock
   config.default_cassette_options = {
