@@ -1,0 +1,313 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://127.0.0.1:9515/session
+    body:
+      encoding: UTF-8
+      string: '{"desiredCapabilities":{"browserName":"chrome","version":"","platform":"ANY","javascriptEnabled":true,"cssSelectorsEnabled":true,"takesScreenshot":false,"nativeEvents":false,"rotatable":false,"chromeOptions":{"args":["headless"]}},"capabilities":{"firstMatch":[{"browserName":"chrome"}]}}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '288'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '815'
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"sessionId":"dfc621892bec673607eb0ccfa6d2e38d","status":0,"value":{"acceptSslCerts":true,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"browserName":"chrome","chrome":{"chromedriverVersion":"2.32.498537
+        (cb2f855cbc7b82e20387eaf9a43f6b99b6105061)","userDataDir":"/var/folders/vs/5psbmhhd2mxd_fp1kt516t080000gn/T/.org.chromium.Chromium.kW2rew"},"cssSelectorsEnabled":true,"databaseEnabled":false,"handlesAlerts":true,"hasTouchScreen":false,"javascriptEnabled":true,"locationContextEnabled":true,"mobileEmulationEnabled":false,"nativeEvents":true,"networkConnectionEnabled":false,"pageLoadStrategy":"normal","platform":"Mac
+        OS X","rotatable":false,"setWindowRect":true,"takesHeapSnapshot":true,"takesScreenshot":true,"unexpectedAlertBehaviour":"","version":"62.0.3202.94","webStorageEnabled":true}}'
+    http_version: 
+  recorded_at: Mon, 27 Nov 2017 10:37:19 GMT
+- request:
+    method: post
+    uri: http://127.0.0.1:9515/session/dfc621892bec673607eb0ccfa6d2e38d/url
+    body:
+      encoding: UTF-8
+      string: '{"url":"https://jsbin.com/wufoded"}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '35'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '72'
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"sessionId":"dfc621892bec673607eb0ccfa6d2e38d","status":0,"value":null}'
+    http_version: 
+  recorded_at: Mon, 27 Nov 2017 10:37:21 GMT
+- request:
+    method: post
+    uri: http://127.0.0.1:9515/session/dfc621892bec673607eb0ccfa6d2e38d/element
+    body:
+      encoding: UTF-8
+      string: '{"using":"id","value":"token"}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '30'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '102'
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"sessionId":"dfc621892bec673607eb0ccfa6d2e38d","status":0,"value":{"ELEMENT":"0.9661735081572378-1"}}'
+    http_version: 
+  recorded_at: Mon, 27 Nov 2017 10:37:21 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:9515/session/dfc621892bec673607eb0ccfa6d2e38d/element/0.9661735081572378-1/text
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '316'
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"sessionId":"dfc621892bec673607eb0ccfa6d2e38d","status":0,"value":"13260F601944E5088EA1D967B62D637FB5094B5223E08C675295979D90E227565E8E0536D3C94FC92E36059ACBFA94AC671FA5A1A2E37429CB6B71449637CCBD2F8B84B7896197EA4EC5D5E569DD21756755B647E8E52A30FF77B98DC33E212AD2B301FB8A44800EA0D6C6B69BD312FEE791842E9250CE3AD20AE4"}'
+    http_version: 
+  recorded_at: Mon, 27 Nov 2017 10:37:21 GMT
+- request:
+    method: post
+    uri: http://127.0.0.1:9515/session/dfc621892bec673607eb0ccfa6d2e38d/element
+    body:
+      encoding: UTF-8
+      string: '{"using":"id","value":"tokenKey"}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '33'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '102'
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"sessionId":"dfc621892bec673607eb0ccfa6d2e38d","status":0,"value":{"ELEMENT":"0.9661735081572378-2"}}'
+    http_version: 
+  recorded_at: Mon, 27 Nov 2017 10:37:21 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:9515/session/dfc621892bec673607eb0ccfa6d2e38d/element/0.9661735081572378-2/text
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '252'
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"sessionId":"dfc621892bec673607eb0ccfa6d2e38d","status":0,"value":"3059301306072A8648CE3D020106082A8648CE3D0301070342000405257D1D329C54FBCCD8B49512361EF7ACA0ACB6510183F540F83F3AA4FC324862EB02F1576A2FEB174CFDBE0E6963E7C8C1C9430B01B4FC5D52C9E021A7A491"}'
+    http_version: 
+  recorded_at: Mon, 27 Nov 2017 10:37:21 GMT
+- request:
+    method: delete
+    uri: http://127.0.0.1:9515/session/dfc621892bec673607eb0ccfa6d2e38d
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '72'
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"sessionId":"dfc621892bec673607eb0ccfa6d2e38d","status":0,"value":null}'
+    http_version: 
+  recorded_at: Mon, 27 Nov 2017 10:37:21 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:9515/shutdown
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '40'
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"sessionId":"","status":0,"value":null}'
+    http_version: 
+  recorded_at: Mon, 27 Nov 2017 10:37:21 GMT
+- request:
+    method: post
+    uri: https://stbfep.sps-system.com/api/xmlapi.do
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="Shift_JIS"?><sps-api-request id="ST01-00131-101"><merchant_id>30132</merchant_id><service_id>002</service_id><cust_code>Quipper
+        Customer ID</cust_code><order_id>0d8f1122c64c7d0c88cfb328838a2d38</order_id><item_id>item_1</item_id><item_name>aXRlbQ==</item_name><amount>1250</amount><sps_cust_info_return_flg>1</sps_cust_info_return_flg><dtls><dtl><dtl_rowno>1</dtl_rowno><dtl_item_id>item_1</dtl_item_id><dtl_item_name>aXRlbSAx</dtl_item_name><dtl_item_count>2</dtl_item_count><dtl_amount>500</dtl_amount></dtl><dtl><dtl_rowno>2</dtl_rowno><dtl_item_id>item_2</dtl_item_id><dtl_item_name>aXRlbSAy</dtl_item_name><dtl_item_count>1</dtl_item_count><dtl_amount>250</dtl_amount></dtl></dtls><pay_method_info><dealings_type>10</dealings_type></pay_method_info><pay_option_manage><token>13260F601944E5088EA1D967B62D637FB5094B5223E08C675295979D90E227565E8E0536D3C94FC92E36059ACBFA94AC671FA5A1A2E37429CB6B71449637CCBD2F8B84B7896197EA4EC5D5E569DD21756755B647E8E52A30FF77B98DC33E212AD2B301FB8A44800EA0D6C6B69BD312FEE791842E9250CE3AD20AE4</token><token_key>3059301306072A8648CE3D020106082A8648CE3D0301070342000405257D1D329C54FBCCD8B49512361EF7ACA0ACB6510183F540F83F3AA4FC324862EB02F1576A2FEB174CFDBE0E6963E7C8C1C9430B01B4FC5D52C9E021A7A491</token_key><cust_manage_flg>1</cust_manage_flg><cardbrand_return_flg>1</cardbrand_return_flg></pay_option_manage><encrypted_flg>0</encrypted_flg><request_date>20171127193721</request_date><sps_hashcode>dafc3756a8fd5ac09fe049d6538908fe28515359</sps_hashcode></sps-api-request>
+    headers:
+      User-Agent:
+      - Faraday v0.13.1
+      Content-Type:
+      - text/xml
+      Authorization:
+      - Basic MzAxMzIwMDI6ODQzNWRiZDQ4ZjIyNDk4MDdlYzIxNmMzZDVlY2FiNzE0MjY0Y2M0YQ==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 27 Nov 2017 10:37:15 GMT
+      Server:
+      - Apache
+      Set-Cookie:
+      - JSESSIONID=BDF26603E087F5B9845216D1557AEC05.f114; Path=/api
+      Pragma:
+      - No-cache
+      Cache-Control:
+      - no-cache,no-store,max-age=0
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Content-Length:
+      - '731'
+      Connection:
+      - close
+      Content-Type:
+      - text/xml;charset=Shift_JIS
+      Content-Language:
+      - ja
+    body:
+      encoding: UTF-8
+      string: "<?xml version='1.0' encoding='Shift_JIS' ?>\n  <sps-api-response id=\"ST01-00131-101\">\n
+        \   <res_result>OK</res_result>\n    <res_sps_transaction_id>B30132002ST010013110100361052570</res_sps_transaction_id>\n
+        \   <res_tracking_id>00000616307351</res_tracking_id>\n    <res_pay_method_info>\n
+        \     <cc_company_code>99665</cc_company_code>\n      <cardbrand_code>M</cardbrand_code>\n
+        \     <recognized_no>123456</recognized_no>\n      \n    </res_pay_method_info>\n
+        \   <res_sps_info>\n      <res_sps_cust_no>849884055716</res_sps_cust_no>\n
+        \     <res_sps_payment_no>003</res_sps_payment_no>\n    </res_sps_info>\n
+        \   <res_process_date>20171127193716</res_process_date>\n    <res_err_code/>\n
+        \   <res_date>20171127193716</res_date>\n  </sps-api-response>\n"
+    http_version: 
+  recorded_at: Mon, 27 Nov 2017 10:37:22 GMT
+recorded_with: VCR 3.0.3

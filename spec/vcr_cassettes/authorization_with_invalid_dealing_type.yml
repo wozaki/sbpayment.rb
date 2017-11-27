@@ -1,0 +1,57 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://stbfep.sps-system.com/api/xmlapi.do
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="Shift_JIS"?><sps-api-request id="ST01-00111-101"><merchant_id>30132</merchant_id><service_id>002</service_id><cust_code>Quipper
+        Customer ID</cust_code><order_id>83c437998bfa417f5f6f00593bcd302c</order_id><item_id>item_1</item_id><item_name>aXRlbQ==</item_name><amount>1250</amount><sps_cust_info_return_flg>1</sps_cust_info_return_flg><dtls></dtls><pay_method_info><cc_number>4242424242424242</cc_number><cc_expiration>202001</cc_expiration><security_code>900</security_code><dealings_type>1000</dealings_type></pay_method_info><pay_option_manage><cust_manage_flg>1</cust_manage_flg><cardbrand_return_flg>1</cardbrand_return_flg></pay_option_manage><encrypted_flg>0</encrypted_flg><request_date>20171127193714</request_date><sps_hashcode>5b0257166c14f3c339ba6221c765484187e50a3d</sps_hashcode></sps-api-request>
+    headers:
+      User-Agent:
+      - Faraday v0.13.1
+      Content-Type:
+      - text/xml
+      Authorization:
+      - Basic MzAxMzIwMDI6ODQzNWRiZDQ4ZjIyNDk4MDdlYzIxNmMzZDVlY2FiNzE0MjY0Y2M0YQ==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 27 Nov 2017 10:37:08 GMT
+      Server:
+      - Apache
+      Set-Cookie:
+      - JSESSIONID=A6512FFA5BC28CE9A0C0A2EB3EE2589D.f114; Path=/api
+      Pragma:
+      - No-cache
+      Cache-Control:
+      - no-cache,no-store,max-age=0
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Content-Length:
+      - '201'
+      Connection:
+      - close
+      Content-Type:
+      - text/xml;charset=Shift_JIS
+      Content-Language:
+      - ja
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version='1.0' encoding='Shift_JIS' ?>
+          <sps-api-response>
+            <res_result>NG</res_result>
+            <res_err_code>10105202</res_err_code>
+            <res_date>20171127193708</res_date>
+          </sps-api-response>
+    http_version: 
+  recorded_at: Mon, 27 Nov 2017 10:37:14 GMT
+recorded_with: VCR 3.0.3
