@@ -101,6 +101,10 @@ describe 'Customer API behavior' do
     end
 
     describe 'create with token' do
+      before do
+        @token, @token_key = get_tokens
+      end
+
       around do |e|
         VCR.use_cassette 'customer-api-create-with-token' do
           e.run
@@ -110,19 +114,23 @@ describe 'Customer API behavior' do
       it 'returns OK' do
         req = Sbpayment::API::Credit::CreateCustomerTokenRequest.new
         req.cust_code = @cust_code_for_request_with_token
-        req.encrypted_flg = '1'
-        req.pay_option_manage.token = 'a'*248
-        req.pay_option_manage.token_key = 'b'*182
+        req.encrypted_flg = '0'
+        req.pay_option_manage.token = @token
+        req.pay_option_manage.token_key = @token_key
         req.pay_method_info.resrv1 = 'テストユーザー'
         res = req.perform
         expect(res.status).to eq 200
         expect(res.headers['content-type']).to include 'text/xml'
         expect(res.body[:res_result]).to eq 'OK'
-        expect(res.body[:'res_pay_method_info.cardbrand_code']).to eq "V"
+        expect(res.body[:'res_pay_method_info.cardbrand_code']).to eq "M"
       end
     end
 
     describe 'update with token' do
+      before do
+        @token, @token_key = get_tokens
+      end
+
       around do |e|
         VCR.use_cassette 'customer-api-update-with-token' do
           e.run
@@ -130,20 +138,19 @@ describe 'Customer API behavior' do
       end
 
       it 'returns OK' do
+        token, tokenKey = get_tokens
         req = Sbpayment::API::Credit::UpdateCustomerTokenRequest.new
         req.cust_code = @cust_code_for_request_with_token
-        req.encrypted_flg = '1'
-        req.pay_option_manage.token = 'a'*248
-        req.pay_option_manage.token_key = 'b'*182
+        req.encrypted_flg = '0'
+        req.pay_option_manage.token = @token
+        req.pay_option_manage.token_key = @token_key
         req.pay_method_info.resrv1 = 'テストユーザー1'
         res = req.perform
         expect(res.status).to eq 200
         expect(res.headers['content-type']).to include 'text/xml'
         expect(res.body[:res_result]).to eq 'OK'
-        expect(res.body[:'res_pay_method_info.cardbrand_code']).to eq "V"
+        expect(res.body[:'res_pay_method_info.cardbrand_code']).to eq "M"
       end
     end
-
   end
-
 end
