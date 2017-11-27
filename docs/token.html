@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>sbpayment token</title>
+  <script src="https://stbtoken.sps-system.com/sbpstoken/com_sbps_system_token.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      com_sbps_system.generateToken({
+        merchantId: '30132',
+        serviceId: '002',
+        ccNumber: '5250729026209007',
+        ccExpiration: '201103',
+        securityCode: '798'
+      }, function(response) {
+        document.getElementById("token").textContent = response.tokenResponse.token;
+        document.getElementById("tokenKey").textContent = response.tokenResponse.tokenKey;
+      });
+    });
+  </script>
+</head>
+<body>
+  <span id="token"></span>
+  <span id="tokenKey"></span>
+</body>
+</html>
