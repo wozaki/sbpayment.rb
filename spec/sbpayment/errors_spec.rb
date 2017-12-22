@@ -13,6 +13,7 @@ describe Sbpayment::APIError do
     it 'parses a valid format to a related error' do
       expect(Sbpayment::APIError.parse '10123203').to be_an_instance_of(Sbpayment::API10123Error)
       expect(Sbpayment::APIError.parse '101K1203').to be_an_instance_of(Sbpayment::API101K1Error)
+      expect(Sbpayment::APIError.parse '101T1999').to be_an_instance_of(Sbpayment::API101T1Error)
       expect(Sbpayment::APIError.parse '40530999').to be_an_instance_of(Sbpayment::API40530Error)
       expect(Sbpayment::APIError.parse '101ZZ203').to be_an_instance_of(Sbpayment::APIUnknown101Error)
       expect(Sbpayment::APIError.parse '11122333').to be_an_instance_of(Sbpayment::APIUnknownPaymentMethodError)
