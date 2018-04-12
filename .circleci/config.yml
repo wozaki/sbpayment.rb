@@ -1,29 +1,24 @@
+references: &common
+  working_directory: ~/sbpayment.rb
+  steps:
+    - checkout
+    - run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
+    - run: bundle exec rspec
+
 version: 2
 jobs:
   build_ruby237:
-    working_directory: ~/sbpayment.rb
+    <<: *common
     docker:
       - image: circleci/ruby:2.3.7-browsers
-    steps:
-      - checkout
-      - run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
-      - run: bundle exec rspec
   build_ruby244:
-    working_directory: ~/sbpayment.rb
+    <<: *common
     docker:
       - image: circleci/ruby:2.4.4-browsers
-    steps:
-      - checkout
-      - run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
-      - run: bundle exec rspec
   build_ruby251:
-    working_directory: ~/sbpayment.rb
+    <<: *common
     docker:
       - image: circleci/ruby:2.5.1-browsers
-    steps:
-      - checkout
-      - run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
-      - run: bundle exec rspec
 
 workflows:
   version: 2
