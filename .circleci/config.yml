@@ -16,6 +16,14 @@ jobs:
       - checkout
       - run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
       - run: bundle exec rspec
+  build_ruby251:
+    working_directory: ~/sbpayment.rb
+    docker:
+      - image: circleci/ruby:2.5.1-browsers
+    steps:
+      - checkout
+      - run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
+      - run: bundle exec rspec
 
 workflows:
   version: 2
@@ -23,3 +31,4 @@ workflows:
     jobs:
       - build_ruby235
       - build_ruby242
+      - build_ruby251
