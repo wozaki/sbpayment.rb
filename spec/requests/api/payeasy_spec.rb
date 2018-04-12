@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Webcvs API behavior' do
+describe 'PayEasy API behavior' do
   before do
     Sbpayment.configure do |x|
       x.sandbox = true
@@ -12,95 +12,81 @@ describe 'Webcvs API behavior' do
     end
   end
 
-  describe 'read payment result' do
+  describe "payment request" do
     around do |e|
-      VCR.use_cassette 'webcvs-read-payment-result' do
+      VCR.use_cassette 'payeasy-payment-request' do
         e.run
       end
     end
 
-    it 'works' do
-      # payment part
-      req = Sbpayment::API::Webcvs::PaymentRequest.new
+    it "works" do
+      req = Sbpayment::API::Payeasy::PaymentRequest.new
 
       req.cust_code = 'Quipper Customer ID'
       req.order_id  = SecureRandom.hex
-      req.item_id   = 'item_1'
+      req.item_id   = 'item1'
       req.item_name = 'item'
       req.amount    = 1250
       req.order_rowno = 1
 
-      detail = Sbpayment::API::Webcvs::PaymentRequest::Detail.new
+      detail = Sbpayment::API::Payeasy::PaymentRequest::Detail.new
       detail.dtl_rowno      = 1
-      detail.dtl_item_id    = 'item_1'
-      detail.dtl_item_name  = 'item 1'
+      detail.dtl_item_id    = 'item1'
+      detail.dtl_item_name  = 'item1'
       detail.dtl_item_count = 2
       detail.dtl_amount     = 500
       req.dtls << detail
 
-      detail = Sbpayment::API::Webcvs::PaymentRequest::Detail.new
+      detail = Sbpayment::API::Payeasy::PaymentRequest::Detail.new
       detail.dtl_rowno      = 2
-      detail.dtl_item_id    = 'item_2'
-      detail.dtl_item_name  = 'item 2'
+      detail.dtl_item_id    = 'item2'
+      detail.dtl_item_name  = 'item2'
       detail.dtl_item_count = 1
       detail.dtl_amount     = 250
       req.dtls << detail
 
       req.pay_method_info.issue_type = '0'
       req.pay_method_info.last_name = 'てすと'
-      req.pay_method_info.first_name = '　'     # full-width whitespace
+      req.pay_method_info.first_name = '　'
       req.pay_method_info.last_name_kana = 'テスト'
       req.pay_method_info.first_name_kana = nil
       req.pay_method_info.first_zip = '000'
       req.pay_method_info.second_zip = '0000'
-      req.pay_method_info.add1 = '　'           # full-width whitespace
-      req.pay_method_info.add2 = '　'           # full-width whitespace
+      req.pay_method_info.add1 = '　'
+      req.pay_method_info.add2 = '　'
       req.pay_method_info.add3 = nil
       req.pay_method_info.tel = '0312345678'
       req.pay_method_info.mail = 'cvs@dummy.com'
       req.pay_method_info.seiyakudate = Time.now.strftime('%Y%m%d')
-      req.pay_method_info.webcvstype = '002'
-      req.pay_method_info.bill_date = Time.now.strftime('%Y%m%d')
-      req.encrypted_flg = '0'
+      req.pay_method_info.payeasy_type = 'O'
+      req.pay_method_info.terminal_value = 'P'
+      req.pay_method_info.bill_info_kana = 'セイキュウカナ'
+      req.pay_method_info.bill_info = '請求情報'
+      req.pay_method_info.bill_note = '管理メモ'
+      req.pay_method_info.bill_date = (Time.now + (24 * 60 * 60 * 7)).strftime('%Y%m%d')
 
+      req.encrypted_flg = '0'
       res = req.perform
 
       expect(res.status).to eq 200
       expect(res.headers['content-type']).to include 'text/xml'
       expect(res.body[:res_result]).to eq 'OK'
-
-      # read payment result part
-      req = Sbpayment::API::Webcvs::ReadPaymentResultRequest.new
-      req.encrypted_flg = '0'
-      req.sps_transaction_id = res.body[:res_sps_transaction_id]
-      req.tracking_id = res.body[:res_tracking_id]
-
-      res = req.perform
-
-      expect(res.status).to eq 200
-      expect(res.headers['content-type']).to include 'text/xml'
-      expect(res.body[:res_result]).to eq 'OK'
-      expect(res.body[:res_sps_transaction_id]).to eq 'B71210007MG010010170100188245657'
-      expect(res.body[:res_status]).to eq '0'
-      expect(res.body[:'res_pay_method_info.webcvstype']).to eq '002'
-      expect(res.body[:'res_pay_method_info.invoice_no']).to eq '83897187434765'
-      expect(res.body[:'res_pay_method_info.bill_date']).to eq '20161028'
-      expect(res.body[:'res_pay_method_info.cvs_pay_data1']).to eq '30654892-426543614'
-      expect(res.body[:'res_pay_method_info.cvs_pay_data2']).to eq 'https://cvsshiharai.densan-s.co.jp/Haraikomi.aspx?order1=30654892&order2=426543614'
-      expect(res.body[:'res_pay_method_info.payment_status']).to eq '1'
-      expect(res.body[:res_process_date]).to eq '20161028192250'
-      expect(res.body[:res_date]).to eq '20161028192251'
+      expect(res.error).to be_nil
+      expect(res.body[:'res_pay_method_info.invoice_no']).not_to be_nil
+      expect(res.body[:'res_pay_method_info.bill_date']).not_to be_nil
+      expect(res.body[:'res_pay_method_info.skno']).not_to be_nil
+      expect(res.body[:'res_pay_method_info.cust_number']).not_to be_nil
     end
   end
 
   describe "notice" do
-    let(:request_body) { File.open("spec/fixtures/webcvs_notice_request.xml", "rb").read }
+    let(:request_body) { File.open("spec/fixtures/payeasy_notice_request.xml", "rb").read }
     let(:request_header) { nil }
-    let(:response_body) { File.open("spec/fixtures/webcvs_notice_response.xml", "rb").read.strip }
+    let(:response_body) { File.open("spec/fixtures/payeasy_notice_response.xml", "rb").read.strip }
 
     it "works" do
       request = Sbpayment::CallbackFactory.request(request_header, request_body)
-      expect(request).to be_kind_of Sbpayment::API::Webcvs::NoticeRequest
+      expect(request).to be_kind_of Sbpayment::API::Payeasy::NoticeRequest
       expect(request.body[:merchant_id]).to eq '99999'
       expect(request.body[:service_id]).to eq '999'
       expect(request.body[:sps_transaction_id]).to eq 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
@@ -119,9 +105,9 @@ describe 'Webcvs API behavior' do
       expect(response.to_xml).to eq response_body
     end
 
-    let(:response_body_with_error) { File.open("spec/fixtures/webcvs_notice_response_with_error.xml", "rb").read.strip }
+    let(:response_body_with_error) { File.open("spec/fixtures/payeasy_notice_response_with_error.xml", "rb").read.strip }
     it "encodes to sjis" do
-      response_err = Sbpayment::API::Webcvs::NoticeResponse.new
+      response_err = Sbpayment::API::Payeasy::NoticeResponse.new
       response_err.res_result = 'NG'
       response_err.res_err_msg = 'エラーメッセージ'
       expect(response_err.to_xml).to eq response_body_with_error
@@ -129,13 +115,13 @@ describe 'Webcvs API behavior' do
   end
 
   describe "cancel" do
-    let(:request_body) { File.open("spec/fixtures/webcvs_cancel_request.xml", "rb").read }
+    let(:request_body) { File.open("spec/fixtures/payeasy_cancel_request.xml", "rb").read }
     let(:request_header) { nil }
-    let(:response_body) { File.open("spec/fixtures/webcvs_cancel_response.xml", "rb").read.strip }
+    let(:response_body) { File.open("spec/fixtures/payeasy_cancel_response.xml", "rb").read.strip }
 
     it "works" do
       request = Sbpayment::CallbackFactory.request(request_header, request_body)
-      expect(request).to be_kind_of Sbpayment::API::Webcvs::CancelRequest
+      expect(request).to be_kind_of Sbpayment::API::Payeasy::CancelRequest
       expect(request.body[:service_id]).to eq '999'
       expect(request.body[:sps_transaction_id]).to eq 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
       expect(request.body[:tracking_id]).to eq '12345678901234'
@@ -148,9 +134,9 @@ describe 'Webcvs API behavior' do
       expect(response.to_xml).to eq response_body
     end
 
-    let(:response_body_with_error) { File.open("spec/fixtures/webcvs_cancel_response_with_error.xml", "rb").read.strip }
+    let(:response_body_with_error) { File.open("spec/fixtures/payeasy_cancel_response_with_error.xml", "rb").read.strip }
     it "encodes to sjis" do
-      response_err = Sbpayment::API::Webcvs::CancelResponse.new
+      response_err = Sbpayment::API::Payeasy::CancelResponse.new
       response_err.res_result = 'NG'
       response_err.res_err_msg = 'エラーメッセージ'
       expect(response_err.to_xml).to eq response_body_with_error

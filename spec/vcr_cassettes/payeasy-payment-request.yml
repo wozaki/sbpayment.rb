@@ -1,0 +1,71 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://stbfep.sps-system.com/api/xmlapi.do
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="Shift_JIS"?><sps-api-request id="ST01-00101-703"><merchant_id>30132</merchant_id><service_id>002</service_id><cust_code>Quipper
+        Customer ID</cust_code><order_id>4ab1f29554d64a742605ff01814e60a6</order_id><item_id>item1</item_id><item_name>aXRlbQ==</item_name><amount>1250</amount><order_rowno>1</order_rowno><dtls><dtl><dtl_rowno>1</dtl_rowno><dtl_item_id>item1</dtl_item_id><dtl_item_name>aXRlbTE=</dtl_item_name><dtl_item_count>2</dtl_item_count><dtl_amount>500</dtl_amount></dtl><dtl><dtl_rowno>2</dtl_rowno><dtl_item_id>item2</dtl_item_id><dtl_item_name>aXRlbTI=</dtl_item_name><dtl_item_count>1</dtl_item_count><dtl_amount>250</dtl_amount></dtl></dtls><pay_method_info><issue_type>0</issue_type><last_name>gsSCt4LG</last_name><first_name>gUA=</first_name><last_name_kana>g2WDWINn</last_name_kana><first_zip>000</first_zip><second_zip>0000</second_zip><add1>gUA=</add1><add2>gUA=</add2><tel>0312345678</tel><mail>cvs@dummy.com</mail><seiyakudate>20160829</seiyakudate><payeasy_type>O</payeasy_type><terminal_value>P</terminal_value><bill_info_kana>g1qDQ4NMg4WDRYNKg2k=</bill_info_kana><bill_info>kL+LgY/ulfE=</bill_info><bill_note>iseXnYOBg4I=</bill_note><bill_date>20160905</bill_date></pay_method_info><encrypted_flg>0</encrypted_flg><request_date>20160829180711</request_date><sps_hashcode>f45eabd249bb23d2e649cc07bc7b33ffcc601b88</sps_hashcode></sps-api-request>
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Content-Type:
+      - text/xml
+      Authorization:
+      - Basic MzAxMzIwMDI6ODQzNWRiZDQ4ZjIyNDk4MDdlYzIxNmMzZDVlY2FiNzE0MjY0Y2M0YQ==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 29 Aug 2016 09:07:11 GMT
+      Server:
+      - Apache
+      Set-Cookie:
+      - JSESSIONID=BF26215F7192241D0A8F6EC5AA12FE25.f215; Path=/api
+      Pragma:
+      - No-cache
+      Cache-Control:
+      - no-cache,no-store,max-age=0
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cteonnt-Length:
+      - '665'
+      Connection:
+      - close
+      Content-Type:
+      - text/xml;charset=Shift_JIS
+      Content-Language:
+      - ja
+      Content-Length:
+      - '334'
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        <?xml version='1.0' encoding='Shift_JIS' ?>
+          <sps-api-response id="ST01-00101-703">
+            <res_result>OK</res_result>
+            <res_sps_transaction_id>B30132002ST010010170300159847388</res_sps_transaction_id>
+            <res_tracking_id>83917088034266</res_tracking_id>
+            <res_pay_method_info>
+              <invoice_no>83917088034266</invoice_no>
+              <bill_date>20160905</bill_date>
+              <skno>59999</skno>
+              <cust_number>12345678901234567890-123456</cust_number>
+              <bank_form/>
+              <bptn/>
+              <bill/>
+            </res_pay_method_info>
+            <res_process_date>20160829180711</res_process_date>
+            <res_err_code/>
+            <res_date>20160829180711</res_date>
+          </sps-api-response>
+    http_version: 
+  recorded_at: Mon, 29 Aug 2016 09:07:11 GMT
+recorded_with: VCR 3.0.3
