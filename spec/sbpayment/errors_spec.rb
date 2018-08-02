@@ -34,7 +34,7 @@ describe Sbpayment::APIError do
           expect(subject).to be_an_instance_of(Sbpayment::APIUnknownCommonType05Error)
         end
 
-        it 'knowns the type detail' do
+        it 'knows the type detail' do
           expect(subject.type.summary).to eq('桁数エラー')
         end
 
@@ -52,7 +52,7 @@ describe Sbpayment::APIError do
           expect(subject).to be_an_instance_of(Sbpayment::API10105Error)
         end
 
-        it 'knowns the type detail' do
+        it 'knows the type detail' do
           expect(subject.type.summary).to eq('桁数エラー')
         end
       end
@@ -66,7 +66,7 @@ describe Sbpayment::APIError do
           expect(subject).to be_an_instance_of(Sbpayment::APIUnknownCommonType05Error)
         end
 
-        it 'knowns the item detail' do
+        it 'knows the item detail' do
           expect(subject.item.summary).to eq('該当項目なし')
         end
       end
@@ -78,7 +78,7 @@ describe Sbpayment::APIError do
           expect(subject).to be_an_instance_of(Sbpayment::API10105Error)
         end
 
-        it 'knowns the type detail' do
+        it 'knows the item detail' do
           expect(subject.item.summary).to eq('該当項目なし')
         end
       end
