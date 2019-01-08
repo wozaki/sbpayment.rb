@@ -1,6 +1,6 @@
 # sbpayment.rb [![Circle CI](https://img.shields.io/circleci/project/quipper/sbpayment.rb.svg)](https://circleci.com/gh/quipper/sbpayment.rb) [![Rubygems](https://img.shields.io/gem/v/sbpayment.svg)](https://rubygems.org/gems/sbpayment)
 
-A client library for [sbpayment (Softbank Payment Service)](http://www.sbpayment.jp) written in Ruby.
+A client library for [sbpayment (SB Payment Service)](http://www.sbpayment.jp) written in Ruby.
 
 This library is not an official library, please use at your own risk.
 

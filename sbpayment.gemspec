@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Kohei Hasegawa", "miyucy"]
   spec.email         = ["ameutau@gmail.com"]
   spec.homepage      = "https://github.com/quipper/sbpayment.rb"
-  spec.summary       = %q{A client library for sbpayment (Softbank Payment Service) written in Ruby.}
-  spec.description   = %q{A client library for sbpayment (Softbank Payment Service) written in Ruby.}
+  spec.summary       = %q{A client library for sbpayment (SB Payment Service) written in Ruby.}
+  spec.description   = %q{A client library for sbpayment (SB Payment Service) written in Ruby.}
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
