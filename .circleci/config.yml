@@ -7,28 +7,23 @@ references: &common
 
 version: 2
 jobs:
-  build_ruby238:
+  build_ruby246:
     <<: *common
     docker:
-      - image: circleci/ruby:2.3.8-browsers
-  build_ruby245:
+      - image: circleci/ruby:2.4.6-browsers
+  build_ruby255:
     <<: *common
     docker:
-      - image: circleci/ruby:2.4.5-browsers
-  build_ruby253:
+      - image: circleci/ruby:2.5.5-browsers
+  build_ruby263:
     <<: *common
     docker:
-      - image: circleci/ruby:2.5.3-browsers
-  build_ruby260:
-    <<: *common
-    docker:
-      - image: circleci/ruby:2.6.0-browsers
+      - image: circleci/ruby:2.6.3-browsers
 
 workflows:
   version: 2
   build:
     jobs:
-      - build_ruby238
-      - build_ruby245
-      - build_ruby253
-      - build_ruby260
+      - build_ruby246
+      - build_ruby255
+      - build_ruby263
