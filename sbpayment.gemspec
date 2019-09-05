@@ -26,7 +26,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake', '~> 12.3'
   spec.add_development_dependency 'rspec'
   spec.add_development_dependency 'vcr', '~> 5.0.0'
-  spec.add_development_dependency 'webmock', '~> 3.6.0'
+  spec.add_development_dependency 'webmock', '~> 3.7.2'
   spec.add_development_dependency 'pry'
   spec.add_development_dependency 'timecop'
   spec.add_development_dependency 'selenium-webdriver'
