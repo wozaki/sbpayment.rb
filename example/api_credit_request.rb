@@ -1,5 +1,6 @@
 require 'sbpayment'
 require 'pp'
+require 'securerandom'
 
 # Credit api request example to exclusive environment (専有環境)
 
