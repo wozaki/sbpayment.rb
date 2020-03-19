@@ -2,6 +2,7 @@ references: &common
   working_directory: ~/sbpayment.rb
   steps:
     - checkout
+    - run: gem update bundler
     - run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
     - run: bundle exec rspec
 
