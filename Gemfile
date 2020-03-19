@@ -4,4 +4,4 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'pry-byebug'
-gem 'chromedriver-helper' unless ENV.key?('CIRCLECI')
+gem 'webdrivers' unless ENV.key?('CIRCLECI')
