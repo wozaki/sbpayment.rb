@@ -45,7 +45,7 @@ describe 'timeout behavior' do
         stub = stub_request(:post, Sbpayment::SANDBOX_URL + Sbpayment::API_PATH).to_timeout
         expect(Faraday).to receive('new').with(faraday_options).and_call_original
         req = dummy_request
-        expect { req.perform }.to raise_error(Faraday::Error::ConnectionFailed)
+        expect { req.perform }.to raise_error(Faraday::ConnectionFailed)
         expect(stub).to have_been_requested.times(1)
       end
     end
