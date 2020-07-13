@@ -69,7 +69,7 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 2.1)
-  faraday (~> 0.17.0)
+  faraday (= 0.17.3)
   pry
   pry-byebug
   rake (~> 13.0)
