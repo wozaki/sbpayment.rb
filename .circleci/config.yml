@@ -1,30 +1,34 @@
-references: &common
-  working_directory: ~/sbpayment.rb
-  steps:
-    - checkout
-    - run: gem update bundler
-    - run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
-    - run: bundle exec rspec
+version: 2.1
 
-version: 2
 jobs:
-  build_ruby246:
-    <<: *common
+  test:
+    parameters:
+      gemfile:
+        type: string
+      ruby-image:
+        type: string
     docker:
-      - image: circleci/ruby:2.4.6-browsers
-  build_ruby255:
-    <<: *common
-    docker:
-      - image: circleci/ruby:2.5.5-browsers
-  build_ruby263:
-    <<: *common
-    docker:
-      - image: circleci/ruby:2.6.3-browsers
+      - image: << parameters.ruby-image >>
+    environment:
+      BUNDLE_GEMFILE: << parameters.gemfile >>
+    working_directory: ~/sbpayment.rb
+    steps:
+      - checkout
+      - run: gem update bundler
+      - run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
+      - run: bundle exec rspec
 
 workflows:
-  version: 2
-  build:
+  all-tests:
     jobs:
-      - build_ruby246
-      - build_ruby255
-      - build_ruby263
+      - test:
+          matrix:
+            parameters:
+              gemfile:
+                - gemfiles/faraday-0.16/Gemfile
+                - gemfiles/faraday-0.17/Gemfile
+                - gemfiles/faraday-1.0/Gemfile
+              ruby-image:
+                - circleci/ruby:2.4.6-browsers
+                - circleci/ruby:2.5.5-browsers
+                - circleci/ruby:2.6.3-browsers
