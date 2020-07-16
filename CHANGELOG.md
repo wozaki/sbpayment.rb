@@ -1,3 +1,6 @@
+## v0.11.1
+- Fix proxy configuration error with faraday 1.0+ (#112)
+
 ## v0.11.0
 - Change chromedriver-helper to webdrivers (#92)
 - Update vcr version requirement ('~> 5.1.0') (#106)
